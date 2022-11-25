@@ -7,5 +7,6 @@ public class NewMainButton : MonoBehaviour
     public int requiredPoints;
     public GameObject lockScreen;
     public GameObject ribbonIcon;
+    public GameObject handPointIcon;
 
 }

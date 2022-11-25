@@ -98,6 +98,13 @@ public class Pronounce : MonoBehaviour
 
     public void OptionButtons(int num)
     {
+        audioContainer1.SetActive(false);
+        choiceContainer1.SetActive(false);
+        audioContainer2.SetActive(false);
+        choiceContainer2.SetActive(false);
+        audioContainer3.SetActive(false);
+        choiceContainer3.SetActive(false);
+
         timerStopFunction();
         if (num == 1)
         {

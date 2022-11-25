@@ -173,7 +173,7 @@ public class MainPageScript : MonoBehaviour
             testMenu.SetActive(false);
             arrangePage.SetActive(false);
 
-            topTitleText.text = "Write: Alphabets";
+            topTitleText.text = "Write: Letters";
             backButton.SetActive(true);
         }
         else if (gameManager.mainPageNumber == 5)
@@ -205,7 +205,7 @@ public class MainPageScript : MonoBehaviour
             testMenu.SetActive(false);
             arrangePage.SetActive(false);
 
-            topTitleText.text = "Pronunciation Alphabets";
+            topTitleText.text = "Pronounce: Letters";
             backButton.SetActive(true);
         }
         else if (gameManager.mainPageNumber == 7)
@@ -221,7 +221,7 @@ public class MainPageScript : MonoBehaviour
             testMenu.SetActive(false);
             arrangePage.SetActive(false);
 
-            topTitleText.text = "Pronunciation Numbers";
+            topTitleText.text = "Pronounce: Numbers";
             backButton.SetActive(true);
         }
         else if (gameManager.mainPageNumber == 8)
