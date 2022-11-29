@@ -26,9 +26,14 @@ public class MainPageScript : MonoBehaviour
     GameManager gameManager;
     public GameObject gameM;
 
+    PlayerStats playerPrefStats;
+    public GameObject playerPrefS;
+
     private void Awake()
     {
         gameManager = gameM.GetComponent<GameManager>();
+
+        playerPrefStats = playerPrefS.GetComponent<PlayerStats>();
     }
 
     private void OnEnable()
@@ -46,6 +51,9 @@ public class MainPageScript : MonoBehaviour
         backButton.SetActive(false);
 
         MainPageRender();
+
+        Debug.Log("Current User ID: " + playerPrefStats.playerPrefID.ToString());
+
     }
 
     public void ShowPage(int page)

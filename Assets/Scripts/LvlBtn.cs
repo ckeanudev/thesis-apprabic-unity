@@ -10,6 +10,7 @@ public class LvlBtn : MonoBehaviour
     public int levelNumber;
     public string mode;
     public string category;
+    public int numberReferenceLevel;
 
     public TextMeshProUGUI levelTitleText;
     public TextMeshProUGUI levelNumberText;
@@ -20,11 +21,16 @@ public class LvlBtn : MonoBehaviour
     GameManager gameManager;
     public GameObject gameM;
 
+    PlayerStats playerPrefStats;
+    public GameObject playerPrefS;
+
     public int pointsUnlock = 0;
 
     private void OnEnable()
     {
         gameManager = gameM.GetComponent<GameManager>();
+
+        playerPrefStats = playerPrefS.GetComponent<PlayerStats>();
 
         levelTitleText.text = levelTitle;
         levelNumberText.text = levelNumber.ToString();

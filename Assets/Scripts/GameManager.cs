@@ -165,7 +165,7 @@ public class GameManager : MonoBehaviour
 
     public void SetWritingA(string writingAUI)
     {
-        Debug.Log(writingAUI);
+        //Debug.Log(writingAUI);
         pageNumber = 2;
         if (writingAUI == "WA-1")
         {
@@ -283,7 +283,7 @@ public class GameManager : MonoBehaviour
 
     public void SetWritingN(string writingNUI)
     {
-        Debug.Log(writingNUI);
+        //Debug.Log(writingNUI);
 
         pageNumber = 3;
         if (writingNUI == "WN-1")

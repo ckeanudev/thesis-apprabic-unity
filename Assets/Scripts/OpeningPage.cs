@@ -22,9 +22,15 @@ public class OpeningPage : MonoBehaviour
     public string nameText = "";
     public int avatarID = 0;
 
-    void Start()
+    PlayerStats playerPrefStats;
+    public GameObject playerPrefS;
+
+    void OnEnable()
     {
         sqliteScript = scriptDB.GetComponent<SQLiteScript>();
+ 
+        playerPrefStats = playerPrefS.GetComponent<PlayerStats>();
+
         warningText.text = "";
 
         userAppContent.SetActive(false);
@@ -33,22 +39,70 @@ public class OpeningPage : MonoBehaviour
     public void GetFieldText(string name)
     {
         nameText = name;
-        Debug.Log(nameText);
     }
 
     public void GetAvatarID(int avatar)
     {
         avatarID = avatar;
-        Debug.Log(avatarID);
-        //sqliteScript.CreateNewUserApp(nameText, avatarID);
+
+        //Debug.Log(avatarID);
+        //Debug.Log(nameText);
+
+        string firstPlayer = PlayerPrefs.GetString("playerPrefUser1");
+        string secondPlayer = PlayerPrefs.GetString("playerPrefUser2");
+        string thirdPlayer = PlayerPrefs.GetString("playerPrefUser3");
+
+        if (firstPlayer == "" || firstPlayer == null)
+        {
+            PlayerPrefs.SetString("playerPrefUser1", nameText);
+            PlayerPrefs.SetInt("playerPrefUserAvatar1", avatarID);
+            playerPrefStats.playerPrefID = 1;
+        }
+        else if (secondPlayer == "" || secondPlayer == null)
+        {
+            PlayerPrefs.SetString("playerPrefUser2", nameText);
+            PlayerPrefs.SetInt("playerPrefUserAvatar2", avatarID);
+            playerPrefStats.playerPrefID = 2;
+        }
+        else if (thirdPlayer == "" || thirdPlayer == null)
+        {
+            PlayerPrefs.SetString("playerPrefUser3", nameText);
+            PlayerPrefs.SetInt("playerPrefUserAvatar3", avatarID);
+            playerPrefStats.playerPrefID = 3;
+        }
+
+        contentPage = 4;
+    }
+
+    public void ForStartButton ()
+    {
+        string firstPlayer = PlayerPrefs.GetString("playerPrefUser1");
+        string secondPlayer = PlayerPrefs.GetString("playerPrefUser2");
+        string thirdPlayer = PlayerPrefs.GetString("playerPrefUser3");
+
+        userAppContent.SetActive(true);
+        if ((firstPlayer == "" || firstPlayer == null) && (secondPlayer == "" || secondPlayer == null) && (thirdPlayer == "" || thirdPlayer == null)  )
+        {
+            contentPage = 1;
+        }
+        else
+        {
+            contentPage = 3;
+        }
+    }
+
+    public void ForChoosePlayerBtn (int id)
+    {
+        playerPrefStats.playerPrefID = id;
         contentPage = 4;
     }
 
     public void ShowContent(int content)
     {
+        userAppContent.SetActive(true);
+
         if (content == 0)
         {
-            userAppContent.SetActive(true);
             contentPage = 1;
         }
         else if (content == 1)
@@ -70,15 +124,6 @@ public class OpeningPage : MonoBehaviour
             contentPage = 4;
         }
     }
-
-    public IEnumerator CloseUserContent()
-    {
-        yield return new WaitForSeconds(2f);
-        Debug.Log("NICE!");
-        userAppContent.SetActive(false);
-        contentPage = 2;
-    }
-
 
     private void Update()
     {

@@ -21,7 +21,7 @@ public class LoadingFirst : MonoBehaviour
     public IEnumerator CloseUserContent()
     {
         yield return new WaitForSeconds(1f);
-        Debug.Log("NICE!");
+        //Debug.Log("NICE!");
         gameManager.pageNumber = 1;
         openingPage.userAppContent.SetActive(false);
     }
