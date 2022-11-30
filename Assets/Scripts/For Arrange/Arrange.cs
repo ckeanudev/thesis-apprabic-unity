@@ -85,14 +85,14 @@ public class Arrange : MonoBehaviour
     public void timerStartFunction()
     {
         //Debug.Log("Count Start!");
-        Debug.Log(currentTime.ToString());
+        //Debug.Log(currentTime.ToString());
         isTimerStart = true;
         isTimerStop = false;
     }
 
     public void timerStopFunction()
     {
-        Debug.Log("Count Stop!");
+        //Debug.Log("Count Stop!");
         isTimerStart = false;
         isTimerStop = true;
     }
@@ -106,23 +106,23 @@ public class Arrange : MonoBehaviour
         else if (isTimerStop && !isTimerStart)
         {
             currentTimeStop = currentTime;
-            Debug.Log(currentTimeStop.ToString());
+            //Debug.Log(currentTimeStop.ToString());
             isTimerStop = false;
             isTimerStart = false;
 
             if (currentTimeStop <= 8)
             {
-                Debug.Log("3 Stars");
+                //Debug.Log("3 Stars");
                 arrangeUIScript.userScore = 3;
             }
             else if (currentTimeStop > 8 && currentTimeStop <= 13)
             {
-                Debug.Log("2 Stars");
+                //Debug.Log("2 Stars");
                 arrangeUIScript.userScore = 2;
             }
             else if (currentTimeStop > 13)
             {
-                Debug.Log("1 Stars");
+                //Debug.Log("1 Stars");
                 arrangeUIScript.userScore = 1;
             }
         }

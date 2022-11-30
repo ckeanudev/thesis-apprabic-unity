@@ -125,15 +125,15 @@ public class Pronounce : MonoBehaviour
     public void timerStartFunction()
     {
         currentTime = 0;
-        Debug.Log("Count Start!");
-        Debug.Log(currentTime.ToString());
+        //Debug.Log("Count Start!");
+        //Debug.Log(currentTime.ToString());
         isTimerStart = true;
         isTimerStop = false;
     }
 
     public void timerStopFunction()
     {
-        Debug.Log("Count Stop!");
+        //Debug.Log("Count Stop!");
         isTimerStart = false;
         isTimerStop = true;
     }
@@ -150,19 +150,19 @@ public class Pronounce : MonoBehaviour
             Debug.Log(currentTimeStop.ToString());
             isTimerStop = false;
             isTimerStart = false;
-            if (currentTimeStop <= 5)
+            if (currentTimeStop <= 8)
             {
-                Debug.Log("3 Stars");
+                //Debug.Log("3 Stars");
                 pronouneUIScript.userScore = 3;
             }
-            else if (currentTimeStop > 5 && currentTimeStop <= 8)
+            else if (currentTimeStop > 8 && currentTimeStop <= 10)
             {
-                Debug.Log("2 Stars");
+                //Debug.Log("2 Stars");
                 pronouneUIScript.userScore = 2;
             }
-            else if (currentTimeStop > 8)
+            else if (currentTimeStop > 10)
             {
-                Debug.Log("1 Stars");
+                //Debug.Log("1 Stars");
                 pronouneUIScript.userScore = 1;
             }
         }

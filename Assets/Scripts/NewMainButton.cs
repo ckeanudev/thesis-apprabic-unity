@@ -16,23 +16,22 @@ public class NewMainButton : MonoBehaviour
     GameManager gameManager;
     public GameObject gameM;
 
+    RequiredPointsForLevels requiredPointsForLevels;
+    public GameObject requiredPointsS;
+
     // Player Stats
     int playerExperiencePoints = 0;
+
     int playerPreTestScore = 0;
     int playerPostTestScore = 0;
 
-    int playerWriteLettersScore = 0;
-    int playerWriteNumbersScore = 0;
-
-    int playerPronounceLettersScore = 0;
-    int playerPronounceNumbersScore = 0;
-
-    int playerArrangeScore = 0;
+    int playerArrangeProgress = 0;
 
     private void Awake()
     {
         playerPrefStats = playerPrefS.GetComponent<PlayerStats>();
         gameManager = gameM.GetComponent<GameManager>();
+        requiredPointsForLevels = requiredPointsS.GetComponent<RequiredPointsForLevels>();
     }
 
     private void OnEnable()
@@ -44,46 +43,74 @@ public class NewMainButton : MonoBehaviour
         if(playerPrefStats.playerPrefID == 1)
         {
             playerExperiencePoints = PlayerPrefs.GetInt("playerPrefUserExperiencePoints1");
+
             playerPreTestScore = PlayerPrefs.GetInt("playerPrefUserPreTestScore1");
             playerPostTestScore = PlayerPrefs.GetInt("playerPrefUserPostTestScore1");
         }
         else if (playerPrefStats.playerPrefID == 2)
         {
             playerExperiencePoints = PlayerPrefs.GetInt("playerPrefUserExperiencePoints2");
+
             playerPreTestScore = PlayerPrefs.GetInt("playerPrefUserPreTestScore2");
             playerPostTestScore = PlayerPrefs.GetInt("playerPrefUserPostTestScore2");
         }
         else if (playerPrefStats.playerPrefID == 3)
         {
             playerExperiencePoints = PlayerPrefs.GetInt("playerPrefUserExperiencePoints3");
+
             playerPreTestScore = PlayerPrefs.GetInt("playerPrefUserPreTestScore3");
             playerPostTestScore = PlayerPrefs.GetInt("playerPrefUserPostTestScore3");
         }
 
-        // For Lock & Point & Success Icon ---------------------------------
-        // For Test Button
+        // *** For Lock & Point & Ribbon Icon ---------------------------------
+
+        // * For Test Button ---------------------------------
         if (buttonType == "test" && playerPreTestScore == 0)
         {
             handPointIcon.SetActive(true);
         }
 
-        // For Pre Test Button
+        // * For Pre Test Button ---------------------------------
         if (buttonType == "pretest" && playerPreTestScore == 0)
         {
             handPointIcon.SetActive(true);
         }
 
-        // For Post Test Button
-        if (buttonType == "pretest" && playerPreTestScore == 0)
+        if (buttonType == "pretest" && playerPreTestScore > 0)
         {
-            handPointIcon.SetActive(true);
+            ribbonIcon.SetActive(true);
         }
 
-        // For Write Button
+        // * For Post Test Button ---------------------------------
+        if (buttonType == "posttest" && playerPreTestScore > 0)
+        {
+            //handPointIcon.SetActive(true);
+        }
+
+        if (buttonType == "posttest" && playerPostTestScore > 0)
+        {
+            ribbonIcon.SetActive(true);
+        }
+
+        // * For Write Button ---------------------------------
         if (buttonType == "write" && playerPreTestScore > 0)
         {
             handPointIcon.SetActive(true);
         }
+
+        if(buttonType == "write" && playerPreTestScore == 0)
+        {
+            lockScreen.SetActive(true);
+        }
+
+        if (buttonType == "write letters" && playerPreTestScore > 0)
+        {
+            handPointIcon.SetActive(true);
+        }
+
+        // * For Pronounce Button ---------------------------------
+
+
     }
 
     public void ShowPage()

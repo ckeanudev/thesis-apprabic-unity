@@ -12,8 +12,17 @@ public class PronouneUIScript : MonoBehaviour
 
     public TextMeshProUGUI levelText;
 
+    public GameObject sufficientPointsObject;
+    public TextMeshProUGUI sufficientPointsText;
+
     GameManager gameManager;
     public GameObject gameM;
+
+    PlayerStats playerPrefStats;
+    public GameObject playerPrefS;
+
+    RequiredPointsForLevels requiredPointsForLevels;
+    public GameObject requiredPointsS;
 
     public GameObject lvl1;
     public GameObject lvl2;
@@ -55,9 +64,13 @@ public class PronouneUIScript : MonoBehaviour
     public bool userAnswer = false;
     public int userScore = 0;
 
+    public bool pressNextButton = true;
+
     private void OnEnable()
     {
         gameManager = gameM.GetComponent<GameManager>();
+        playerPrefStats = playerPrefS.GetComponent<PlayerStats>();
+        requiredPointsForLevels = requiredPointsS.GetComponent<RequiredPointsForLevels>();
 
         showWinDialog = false;
         winContainer.SetActive(false);
@@ -82,6 +95,7 @@ public class PronouneUIScript : MonoBehaviour
     // -------------------------------- For Win Panel Button >>>>
     public void BackToChooseLevel()
     {
+        sufficientPointsObject.SetActive(false);
         showWinDialog = false;
         if (pronunciationCategoryType == "alphabets")
         {
@@ -97,25 +111,544 @@ public class PronouneUIScript : MonoBehaviour
 
     public void NextLevelBtn()
     {
+        if (pressNextButton)
+        {
+
+            int playerExperiencePoints = 0;
+            int pointsMultiplier = 15;
+
+            if (playerPrefStats.playerPrefID == 1)
+            {
+                playerExperiencePoints = PlayerPrefs.GetInt("playerPrefUserExperiencePoints1");
+            }
+            else if (playerPrefStats.playerPrefID == 2)
+            {
+                playerExperiencePoints = PlayerPrefs.GetInt("playerPrefUserExperiencePoints2");
+            }
+            else if (playerPrefStats.playerPrefID == 3)
+            {
+                playerExperiencePoints = PlayerPrefs.GetInt("playerPrefUserExperiencePoints3");
+            }
+
+            //gameManager.pronuncationLevel += 1;
+            //showWinDialog = false;
+
+            if (pronunciationCategoryType == "alphabets")
+            {
+                if (gameManager.pronuncationLevel == 1)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPL2 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPL2 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 2)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPL3 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPL3 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 3)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPL4 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPL4 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 4)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPL5 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPL5 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 5)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPL6 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPL6 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 6)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPL7 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPL7 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 7)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPL8 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPL8 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 8)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPL9 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPL9 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 9)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPL10 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPL10 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 10)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPL11 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPL11 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 11)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPL12 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPL12 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 12)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPL13 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPL13 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 13)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPL14 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPL14 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 14)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPL15 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPL15 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 15)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPL16 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPL16 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 16)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPL17 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPL17 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 17)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPL18 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPL18 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 18)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPL19 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPL19 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 19)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPL20 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPL20 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 20)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPL21 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPL21 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 21)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPL22 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPL22 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 22)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPL23 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPL23 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 23)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPL24 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPL24 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 24)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPL25 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPL25 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 25)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPL26 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPL26 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 26)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPL27 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPL27 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 27)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPL28 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPL28 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 28)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPN1 * pointsMultiplier)
+                    {
+                        //AddWritingLevel();
+                        gameManager.pageNumber = 1;
+                        gameManager.mainPageNumber = 7;
+                        showWinDialog = false;
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPN1 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+
+            }
+            else if (pronunciationCategoryType == "numbers")
+            {
+                if (gameManager.pronuncationLevel == 1)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPN2 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPN2 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 2)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPN3 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPN3 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 3)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPN4 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPN4 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 4)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPN5 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPN5 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 5)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPN6 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPN6 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 6)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPN7 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPN7 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 7)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPN8 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPN8 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 8)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPN9 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPN9 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 9)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPN10 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPN10 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 10)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forPN11 * pointsMultiplier)
+                    {
+                        AddWritingLevel();
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forPN11 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+                else if (gameManager.pronuncationLevel == 11)
+                {
+                    if (playerExperiencePoints >= requiredPointsForLevels.forARR1 * pointsMultiplier)
+                    {
+                        //AddWritingLevel();
+                        gameManager.pageNumber = 1;
+                        gameManager.mainPageNumber = 1;
+                        showWinDialog = false;
+                    }
+                    else
+                    {
+                        int temp = (requiredPointsForLevels.forARR1 * pointsMultiplier) - playerExperiencePoints;
+                        ShowSufficientObject(temp);
+                    }
+                }
+            }
+
+        }
+    }
+
+    public void AddWritingLevel()
+    {
+        gameManager.pronuncationLevel += 1;
         showWinDialog = false;
-        if (pronunciationCategoryType == "numbers" && gameManager.pronuncationLevel >= 11)
-        {
-            gameManager.pageNumber = 1;
-            gameManager.mainPageNumber = 1;
-        }
-        else if (pronunciationCategoryType == "alphabets" && gameManager.pronuncationLevel >= 28)
-        {
-            gameManager.pageNumber = 1;
-            gameManager.mainPageNumber = 7;
-        }
-        else
-        {
-            gameManager.pronuncationLevel += 1;
-        }
+    }
+
+    public void ShowSufficientObject(int num)
+    {
+        sufficientPointsText.text = "You need " + num.ToString() + " more points to proceed. Retry to earn more points";
+        sufficientPointsObject.SetActive(true);
+        pressNextButton = false;
+        StartCoroutine(HideSufficientAgain());
+    }
+
+    public IEnumerator HideSufficientAgain()
+    {
+        yield return new WaitForSeconds(10f);
+        sufficientPointsObject.SetActive(false);
+        pressNextButton = true;
+    }
+
+    public void CloseSufficientObject()
+    {
+        sufficientPointsObject.SetActive(false);
+        pressNextButton = true;
     }
 
     public void RetryBtn()
     {
+        sufficientPointsObject.SetActive(false);
+        pressNextButton = true;
         showWinDialog = false;
         lvl1.SetActive(false);
         lvl2.SetActive(false);

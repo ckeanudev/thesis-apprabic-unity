@@ -31,7 +31,7 @@ public class DragScript : MonoBehaviour, IPointerDownHandler, IBeginDragHandler,
         //Debug.Log("Drag Enabled ---------------------------------------");
         indexCount = 0;
         
-        Debug.Log(transform.position);
+        //Debug.Log(transform.position);
 
         if (startPosition.x == 0)
         {

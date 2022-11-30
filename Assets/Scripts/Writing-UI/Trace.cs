@@ -85,15 +85,15 @@ public class Trace : MonoBehaviour
 
     public void timerStartFunction()
     {
-        Debug.Log("Count Start!");
-        Debug.Log(currentTime.ToString());
+        //Debug.Log("Count Start!");
+        //Debug.Log(currentTime.ToString());
         isTimerStart = true;
         isTimerStop = false;
     }
 
     public void timerStopFunction()
     {
-        Debug.Log("Count Stop!");
+        //Debug.Log("Count Stop!");
         isTimerStart = false;
         isTimerStop = true;
     }
@@ -107,22 +107,22 @@ public class Trace : MonoBehaviour
         else if (isTimerStop && !isTimerStart)
         {
             currentTimeStop = currentTime;
-            Debug.Log(currentTimeStop.ToString());
+            //Debug.Log(currentTimeStop.ToString());
             isTimerStop = false;
             isTimerStart = false;
             if (currentTimeStop <= averageCountTime)
             {
-                Debug.Log("3 Stars");
+                //Debug.Log("3 Stars");
                 writingUIScript.userScore = 3;
             }
             else if (currentTimeStop > averageCountTime && currentTimeStop <= averageCountTime + (averageCountTime * 0.8))
             {
-                Debug.Log("2 Stars");
+                //Debug.Log("2 Stars");
                 writingUIScript.userScore = 2;
             }
             else if (currentTimeStop > averageCountTime + (averageCountTime * 0.8))
             {
-                Debug.Log("1 Stars");
+                //Debug.Log("1 Stars");
                 writingUIScript.userScore = 1;
             }
         }
