@@ -29,13 +29,93 @@ public class PreTestScript : MonoBehaviour
 
     public GameObject orderCircle;
 
+    PlayerStats playerPrefStats;
+    public GameObject playerPrefS;
+
     public int testNumber = 1;
     public int testScore = 0;
+
+    int playerPreTestScore = 0;
+    int playerPreTestDone = 0;
+
+    int playerPostTestScore = 0;
+    int playerPostTestDone = 0;
+
+    private void OnEnable ()
+    {
+        playerPrefStats = playerPrefS.GetComponent<PlayerStats>();
+
+        if (playerPrefStats.playerPrefID == 1)
+        {
+            playerPreTestScore = PlayerPrefs.GetInt("playerPrefUserPreTestScore1");
+            playerPreTestDone = PlayerPrefs.GetInt("playerPrefUserPreTestDone1");
+
+            playerPostTestScore = PlayerPrefs.GetInt("playerPrefUserPostTestScore1");
+            playerPostTestDone = PlayerPrefs.GetInt("playerPrefUserPostTestDone1");
+        }
+        else if (playerPrefStats.playerPrefID == 2)
+        {
+            playerPreTestScore = PlayerPrefs.GetInt("playerPrefUserPreTestScore2");
+            playerPreTestDone = PlayerPrefs.GetInt("playerPrefUserPreTestDone2");
+
+            playerPostTestScore = PlayerPrefs.GetInt("playerPrefUserPostTestScore2");
+            playerPostTestDone = PlayerPrefs.GetInt("playerPrefUserPostTestDone2");
+
+        }
+        else if (playerPrefStats.playerPrefID == 3)
+        {
+            playerPreTestScore = PlayerPrefs.GetInt("playerPrefUserPreTestScore3");
+            playerPreTestDone = PlayerPrefs.GetInt("playerPrefUserPreTestDone3");
+
+            playerPostTestScore = PlayerPrefs.GetInt("playerPrefUserPostTestScore3");
+            playerPostTestDone = PlayerPrefs.GetInt("playerPrefUserPostTestDone3");
+        }
+
+        if (testType == "pretest")
+        {
+            if (playerPreTestDone == 1)
+            {
+                testScore = playerPreTestScore;
+                testNumber = 16;
+            }
+        }
+        else if (testType == "posttest")
+        {
+            if (playerPostTestDone == 1)
+            {
+                testScore = playerPostTestScore;
+                testNumber = 16;
+            }
+        }
+    }
 
     public void NextTest(int score)
     {
         testNumber += 1;
         testScore += score;
+
+        if (playerPrefStats.playerPrefID == 1)
+        {
+            if (testType == "pretest")
+                PlayerPrefs.SetInt("playerPrefUserPreTestScore1", testScore);
+            else if (testType == "posttest")
+                PlayerPrefs.SetInt("playerPrefUserPostTestScore1", testScore);
+        }
+        else if (playerPrefStats.playerPrefID == 2)
+        {
+            if (testType == "pretest")
+                PlayerPrefs.SetInt("playerPrefUserPreTestScore2", testScore);
+            else if (testType == "posttest")
+                PlayerPrefs.SetInt("playerPrefUserPostTestScore2", testScore);
+        }
+        else if (playerPrefStats.playerPrefID == 3)
+        {
+            if (testType == "pretest")
+                PlayerPrefs.SetInt("playerPrefUserPreTestScore3", testScore);
+            else if (testType == "posttest")
+                PlayerPrefs.SetInt("playerPrefUserPostTestScore3", testScore);
+        }
+
         Debug.Log("Test Number: " + testNumber.ToString());
         Debug.Log("Test Score: " + testScore.ToString());
     }
@@ -145,6 +225,28 @@ public class PreTestScript : MonoBehaviour
         {
             test15.SetActive(false);
             testResult.SetActive(true);
+
+            if (playerPrefStats.playerPrefID == 1)
+            {
+                if (testType == "pretest")
+                    PlayerPrefs.SetInt("playerPrefUserPreTestDone1", 1);
+                else if (testType == "posttest")
+                    PlayerPrefs.SetInt("playerPrefUserPostTestDone1", 1);
+            }
+            else if (playerPrefStats.playerPrefID == 2)
+            {
+                if (testType == "pretest")
+                    PlayerPrefs.SetInt("playerPrefUserPreTestDone2", 1);
+                else if (testType == "posttest")
+                    PlayerPrefs.SetInt("playerPrefUserPostTestDone2", 1);
+            }
+            else if (playerPrefStats.playerPrefID == 3)
+            {
+                if (testType == "pretest")
+                    PlayerPrefs.SetInt("playerPrefUserPreTestDone3", 1);
+                else if (testType == "posttest")
+                    PlayerPrefs.SetInt("playerPrefUserPostTestDone3", 1);
+            }
             //Debug.Log(testScore);
         }
     }

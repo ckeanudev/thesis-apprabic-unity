@@ -62,6 +62,23 @@ public class WinPanelScript : MonoBehaviour
 
     void OnEnable()
     {
+        playerPrefStats = playerPrefS.GetComponent<PlayerStats>();
+        requiredPointsForLevels = requiredPointsS.GetComponent<RequiredPointsForLevels>();
+        gameManager = gameM.GetComponent<GameManager>();
+
+        if (playerPrefStats.playerPrefID == 1)
+        {
+            playerExperiencePoints = PlayerPrefs.GetInt("playerPrefUserExperiencePoints1");
+        }
+        else if (playerPrefStats.playerPrefID == 2)
+        {
+            playerExperiencePoints = PlayerPrefs.GetInt("playerPrefUserExperiencePoints2");
+        }
+        else if (playerPrefStats.playerPrefID == 3)
+        {
+            playerExperiencePoints = PlayerPrefs.GetInt("playerPrefUserExperiencePoints3");
+        }
+
         if (typeMode == "writing")
         {
             writingUIScript = writingUIS.GetComponent<WritingUIScript>();
@@ -89,7 +106,9 @@ public class WinPanelScript : MonoBehaviour
 
             if (typeMode == "writing")
             {
-                if(typeCategory == "letters")
+                Debug.Log("You Scored: " + writingUIScript.userScore.ToString());
+
+                if (typeCategory == "letters")
                     ForWrite("letters");
                 else if (typeCategory == "numbers")
                     ForWrite("numbers");
@@ -161,6 +180,7 @@ public class WinPanelScript : MonoBehaviour
 
     public void ForPlusPointsText(bool add)
     {
+        
         if (writingUIScript.userScore == 3)
         {
             if (add)

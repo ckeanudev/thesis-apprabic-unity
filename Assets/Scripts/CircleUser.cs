@@ -39,7 +39,7 @@ public class CircleUser : MonoBehaviour
         if (playerPrefStats.playerPrefID == 1)
         {
             int firstPlayerAvatar = PlayerPrefs.GetInt("playerPrefUserAvatar1");
-            Debug.Log("Circle User: " + firstPlayerAvatar.ToString());
+            //Debug.Log("Circle User: " + firstPlayerAvatar.ToString());
 
             if (firstPlayerAvatar == 1)
             {
@@ -85,7 +85,7 @@ public class CircleUser : MonoBehaviour
         else if (playerPrefStats.playerPrefID == 2)
         {
             int secondPlayerAvatar = PlayerPrefs.GetInt("playerPrefUserAvatar2");
-            Debug.Log("Circle User: " + secondPlayerAvatar.ToString());
+            //Debug.Log("Circle User: " + secondPlayerAvatar.ToString());
 
             if (secondPlayerAvatar == 1)
             {
@@ -131,7 +131,7 @@ public class CircleUser : MonoBehaviour
         else if (playerPrefStats.playerPrefID == 3)
         {
             int thirdPlayerAvatar = PlayerPrefs.GetInt("playerPrefUserAvatar3");
-            Debug.Log("Circle User: " + thirdPlayerAvatar.ToString());
+            //Debug.Log("Circle User: " + thirdPlayerAvatar.ToString());
 
             if (thirdPlayerAvatar == 1)
             {

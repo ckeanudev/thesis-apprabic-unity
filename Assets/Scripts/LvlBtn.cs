@@ -26,14 +26,68 @@ public class LvlBtn : MonoBehaviour
 
     public int pointsUnlock = 0;
 
+    int pointsMultiplier = 15;
+    int playerExperiencePoints = 0;
+
     private void OnEnable()
     {
+        lockMode.SetActive(false);
+        checkDone.SetActive(false);
+
         gameManager = gameM.GetComponent<GameManager>();
 
         playerPrefStats = playerPrefS.GetComponent<PlayerStats>();
 
         levelTitleText.text = levelTitle;
         levelNumberText.text = levelNumber.ToString();
+
+        int tempLevelref = numberReferenceLevel - 1;
+
+        if (playerPrefStats.playerPrefID == 1)
+        {
+            playerExperiencePoints = PlayerPrefs.GetInt("playerPrefUserExperiencePoints1");
+        }
+        else if (playerPrefStats.playerPrefID == 2)
+        {
+            playerExperiencePoints = PlayerPrefs.GetInt("playerPrefUserExperiencePoints2");
+        }
+        else if (playerPrefStats.playerPrefID == 3)
+        {
+            playerExperiencePoints = PlayerPrefs.GetInt("playerPrefUserExperiencePoints3");
+        }
+
+        if (tempLevelref == 0)
+        {
+
+        }
+
+        if (tempLevelref * pointsMultiplier >= playerExperiencePoints && playerExperiencePoints < numberReferenceLevel * pointsMultiplier)
+        {
+
+        }
+
+        if (playerExperiencePoints < tempLevelref * pointsMultiplier)
+        {
+            lockMode.SetActive(true);
+        }
+
+        //if (playerExperiencePoints >= numberReferenceLevel * pointsMultiplier)
+        //{
+        //    //checkDone.SetActive(true);
+        //    lockMode.SetActive(false);
+        //}
+
+        if (playerExperiencePoints >= (tempLevelref + 1) * pointsMultiplier)
+        {
+            checkDone.SetActive(true);
+        }
+
+
+    }
+
+    private void Update ()
+    {
+
     }
 
     public void LevelButtonContinue()

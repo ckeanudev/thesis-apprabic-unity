@@ -34,8 +34,12 @@ public class ShowUserScript : MonoBehaviour
 
     string playerName;
     int playerExpPoints;
+
     int playerPreTestScore;
+    int playerPreTestDone = 0;
+
     int playerPostTestScore;
+    int playerPostTestDone = 0;
 
     int pointsMultiplier = 15;
 
@@ -49,6 +53,14 @@ public class ShowUserScript : MonoBehaviour
 
     private void OnEnable()
     {
+        playerPrefStats = playerPrefS.GetComponent<PlayerStats>();
+        requiredPointsForLevels = requiredPointsS.GetComponent<RequiredPointsForLevels>();
+        gameManager = gameM.GetComponent<GameManager>();
+        mainPageScript = mainPageS.GetComponent<MainPageScript>();
+
+        preTestRibbonObject.SetActive(false);
+        postTestRibbonObject.SetActive(false);
+
         writeCheckObject.SetActive(false);
         pronounceCheckObject.SetActive(false);
         arrangeCheckObject.SetActive(false);
@@ -59,7 +71,10 @@ public class ShowUserScript : MonoBehaviour
             playerExpPoints = PlayerPrefs.GetInt("playerPrefUserExperiencePoints1");
 
             playerPreTestScore = PlayerPrefs.GetInt("playerPrefUserPreTestScore1");
+            playerPreTestDone = PlayerPrefs.GetInt("playerPrefUserPreTestDone1");
+
             playerPostTestScore = PlayerPrefs.GetInt("playerPrefUserPostTestScore1");
+            playerPostTestDone = PlayerPrefs.GetInt("playerPrefUserPostTestDone1");
         }
         else if (playerPrefStats.playerPrefID == 2)
         {
@@ -67,7 +82,10 @@ public class ShowUserScript : MonoBehaviour
             playerExpPoints = PlayerPrefs.GetInt("playerPrefUserExperiencePoints2");
 
             playerPreTestScore = PlayerPrefs.GetInt("playerPrefUserPreTestScore2");
+            playerPreTestDone = PlayerPrefs.GetInt("playerPrefUserPreTestDone2");
+
             playerPostTestScore = PlayerPrefs.GetInt("playerPrefUserPostTestScore2");
+            playerPostTestDone = PlayerPrefs.GetInt("playerPrefUserPostTestDone2");
         }
         else if (playerPrefStats.playerPrefID == 3)
         {
@@ -75,22 +93,33 @@ public class ShowUserScript : MonoBehaviour
             playerExpPoints = PlayerPrefs.GetInt("playerPrefUserExperiencePoints3");
 
             playerPreTestScore = PlayerPrefs.GetInt("playerPrefUserPreTestScore3");
+            playerPreTestDone = PlayerPrefs.GetInt("playerPrefUserPreTestDone3");
+
             playerPostTestScore = PlayerPrefs.GetInt("playerPrefUserPostTestScore3");
+            playerPostTestDone = PlayerPrefs.GetInt("playerPrefUserPostTestDone3");
         }
 
         // *** ------------------------------------ *** ------------------------------------
+        Debug.Log("Player Name: " + playerName);
+        Debug.Log("Player Points: " + playerExpPoints.ToString());
+        
+        Debug.Log("Player Pre Test Score: " + playerPreTestScore.ToString());
+        Debug.Log("Player Pre Test Done: " + playerPreTestDone.ToString());
+
+
         playerNameText.text = playerName;
         expPointsText.text = playerExpPoints.ToString() + " Points";
 
         // --- For Pre Test ------------------------------------
-        if (playerPreTestScore > 0)
+        if (playerPreTestDone == 1)
         {
+            preTestRibbonObject.SetActive(true);
             if (playerPreTestScore < 10)
                 preTestScoreText.text = "0" + playerPreTestScore.ToString() + "/15";
             else
                 preTestScoreText.text = playerPreTestScore.ToString() + "/15";
         } 
-        else
+        else if (playerPreTestDone == 0)
         {
             preTestScoreText.text = "Take Now";
         }
@@ -98,14 +127,18 @@ public class ShowUserScript : MonoBehaviour
         // --- For Post Test ------------------------------------
         if (playerExpPoints >= requiredPointsForLevels.forPostTest * pointsMultiplier)
         {
-            postTestScoreText.text = "Take Now";
-        }
-        else if (playerPostTestScore > 0)
-        {
-            if (playerPostTestScore < 10)
-                postTestScoreText.text = "0" + playerPostTestScore.ToString() + "/15";
-            else
-                postTestScoreText.text = playerPostTestScore.ToString() + "/15";
+            if (playerPostTestDone == 1)
+            {
+                postTestRibbonObject.SetActive(true);
+                if (playerPostTestScore < 10)
+                    postTestScoreText.text = "0" + playerPostTestScore.ToString() + "/15";
+                else
+                    postTestScoreText.text = playerPostTestScore.ToString() + "/15";
+            }
+            else if (playerPostTestDone == 0)
+            {
+                postTestScoreText.text = "Take Now";
+            }
         }
         else
         {
@@ -129,13 +162,6 @@ public class ShowUserScript : MonoBehaviour
         {
             arrangeCheckObject.SetActive(true);
         }
-
-
-
-
-
-
-
 
     }
 

@@ -19,13 +19,16 @@ public class NewMainButton : MonoBehaviour
     RequiredPointsForLevels requiredPointsForLevels;
     public GameObject requiredPointsS;
 
-    // Player Stats
+    // *** ----- Player Stats
     int playerExperiencePoints = 0;
 
     int playerPreTestScore = 0;
-    int playerPostTestScore = 0;
+    int playerPreTestDone = 0;
 
-    int playerArrangeProgress = 0;
+    int playerPostTestScore = 0;
+    int playerPostTestDone = 0;
+
+    int pointsMultiplier = 15;
 
     private void Awake()
     {
@@ -45,70 +48,179 @@ public class NewMainButton : MonoBehaviour
             playerExperiencePoints = PlayerPrefs.GetInt("playerPrefUserExperiencePoints1");
 
             playerPreTestScore = PlayerPrefs.GetInt("playerPrefUserPreTestScore1");
+            playerPreTestDone = PlayerPrefs.GetInt("playerPrefUserPreTestDone1");
+
             playerPostTestScore = PlayerPrefs.GetInt("playerPrefUserPostTestScore1");
+            playerPostTestDone = PlayerPrefs.GetInt("playerPrefUserPostTestDone1");
         }
         else if (playerPrefStats.playerPrefID == 2)
         {
             playerExperiencePoints = PlayerPrefs.GetInt("playerPrefUserExperiencePoints2");
 
             playerPreTestScore = PlayerPrefs.GetInt("playerPrefUserPreTestScore2");
+            playerPreTestDone = PlayerPrefs.GetInt("playerPrefUserPreTestDone2");
+
             playerPostTestScore = PlayerPrefs.GetInt("playerPrefUserPostTestScore2");
+            playerPostTestDone = PlayerPrefs.GetInt("playerPrefUserPostTestDone2");
         }
         else if (playerPrefStats.playerPrefID == 3)
         {
             playerExperiencePoints = PlayerPrefs.GetInt("playerPrefUserExperiencePoints3");
 
             playerPreTestScore = PlayerPrefs.GetInt("playerPrefUserPreTestScore3");
+            playerPreTestDone = PlayerPrefs.GetInt("playerPrefUserPreTestDone3");
+
             playerPostTestScore = PlayerPrefs.GetInt("playerPrefUserPostTestScore3");
+            playerPostTestDone = PlayerPrefs.GetInt("playerPrefUserPostTestDone3");
         }
 
         // *** For Lock & Point & Ribbon Icon ---------------------------------
 
         // * For Test Button ---------------------------------
-        if (buttonType == "test" && playerPreTestScore == 0)
+        if (buttonType == "test" && playerPreTestDone == 0)
         {
             handPointIcon.SetActive(true);
+        }
+
+        if (buttonType == "test" && playerExperiencePoints >= requiredPointsForLevels.forPostTest * pointsMultiplier && playerPostTestScore == 0)
+        {
+            handPointIcon.SetActive(true);
+        }
+
+        if (playerPreTestDone == 1 && playerPostTestDone == 1)
+        {
+            ribbonIcon.SetActive(true);
         }
 
         // * For Pre Test Button ---------------------------------
-        if (buttonType == "pretest" && playerPreTestScore == 0)
+        if (buttonType == "pretest" && playerPreTestDone == 0)
         {
             handPointIcon.SetActive(true);
         }
 
-        if (buttonType == "pretest" && playerPreTestScore > 0)
+        if (buttonType == "pretest" && playerPreTestDone == 1)
         {
             ribbonIcon.SetActive(true);
         }
 
         // * For Post Test Button ---------------------------------
-        if (buttonType == "posttest" && playerPreTestScore > 0)
-        {
-            //handPointIcon.SetActive(true);
-        }
-
-        if (buttonType == "posttest" && playerPostTestScore > 0)
-        {
-            ribbonIcon.SetActive(true);
-        }
-
-        // * For Write Button ---------------------------------
-        if (buttonType == "write" && playerPreTestScore > 0)
+        if (buttonType == "posttest" && playerExperiencePoints >= requiredPointsForLevels.forPostTest * pointsMultiplier && playerPostTestDone == 0)
         {
             handPointIcon.SetActive(true);
         }
 
-        if(buttonType == "write" && playerPreTestScore == 0)
+        if(buttonType == "posttest" && playerExperiencePoints < requiredPointsForLevels.forPostTest * pointsMultiplier)
         {
             lockScreen.SetActive(true);
         }
 
-        if (buttonType == "write letters" && playerPreTestScore > 0)
+        if (buttonType == "posttest" && playerPostTestDone == 1)
+        {
+            ribbonIcon.SetActive(true);
+        }
+
+        // * * * For Write Button ------------------------------------------------------------------
+        if (buttonType == "write" && playerPreTestDone == 1 && playerExperiencePoints < requiredPointsForLevels.forPL1 * pointsMultiplier)
         {
             handPointIcon.SetActive(true);
         }
 
-        // * For Pronounce Button ---------------------------------
+        if (buttonType == "write" && playerPreTestDone == 0)
+        {
+            lockScreen.SetActive(true);
+        }
+
+        if (buttonType == "write" && playerExperiencePoints >= requiredPointsForLevels.forPL1 * pointsMultiplier)
+        {
+            ribbonIcon.SetActive(true);
+        }
+
+        // * For Write Letters Button ---------------------------------
+        if (buttonType == "write letters" && playerPreTestDone == 1 && playerExperiencePoints < requiredPointsForLevels.forWN1 * pointsMultiplier)
+        {
+            handPointIcon.SetActive(true);
+        }
+
+        if (buttonType == "write letters" && playerExperiencePoints >= requiredPointsForLevels.forWN1 * pointsMultiplier)
+        {
+            ribbonIcon.SetActive(true);
+        }
+
+        // * For Write Numbers Button ---------------------------------
+        if (buttonType == "write numbers" && playerExperiencePoints >= requiredPointsForLevels.forWN1 * pointsMultiplier && playerExperiencePoints < requiredPointsForLevels.forPL1 * pointsMultiplier)
+        {
+            handPointIcon.SetActive(true);
+        }
+
+        if (buttonType == "write numbers" && playerExperiencePoints < requiredPointsForLevels.forWN1 * pointsMultiplier)
+        {
+            lockScreen.SetActive(true);
+        }
+
+        if (buttonType == "write numbers" && playerExperiencePoints >= requiredPointsForLevels.forPL1 * pointsMultiplier)
+        {
+            ribbonIcon.SetActive(true);
+        }
+
+        // * * * For Pronounce Button ------------------------------------------------------------------
+        if (buttonType == "pronounce" && playerExperiencePoints >= requiredPointsForLevels.forPL1 * pointsMultiplier && playerExperiencePoints < requiredPointsForLevels.forARR1 * pointsMultiplier)
+        {
+            handPointIcon.SetActive(true);
+        }
+
+        if (buttonType == "pronounce" && playerExperiencePoints < requiredPointsForLevels.forPL1 * pointsMultiplier)
+        {
+            lockScreen.SetActive(true);
+        }
+
+        if (buttonType == "pronounce" && playerExperiencePoints >= requiredPointsForLevels.forARR1 * pointsMultiplier)
+        {
+            ribbonIcon.SetActive(true);
+        }
+
+        // * For Pronounce Letters Button ---------------------------------
+        if (buttonType == "pronounce letters" && playerExperiencePoints >= requiredPointsForLevels.forPL1 * pointsMultiplier && playerExperiencePoints < requiredPointsForLevels.forPN1 * pointsMultiplier)
+        {
+            handPointIcon.SetActive(true);
+        }
+
+        if (buttonType == "pronounce letters" && playerExperiencePoints >= requiredPointsForLevels.forPN1)
+        {
+            ribbonIcon.SetActive(true);
+        }
+
+        // * For Pronounce Numbers Button ---------------------------------
+        if (buttonType == "pronounce numbers" && playerExperiencePoints >= requiredPointsForLevels.forPN1 && playerExperiencePoints < requiredPointsForLevels.forARR1 * pointsMultiplier)
+        {
+            handPointIcon.SetActive(true);
+        }
+
+        if (buttonType == "pronounce numbers" && playerExperiencePoints < requiredPointsForLevels.forPN1 * pointsMultiplier)
+        {
+            lockScreen.SetActive(true);
+        }
+
+        if (buttonType == "pronounce numbers" && playerExperiencePoints >= requiredPointsForLevels.forARR1 * pointsMultiplier)
+        {
+            ribbonIcon.SetActive(true);
+        }
+
+        // * * * For Arrange Button ------------------------------------------------------------------
+        if (buttonType == "arrange" && playerExperiencePoints >= requiredPointsForLevels.forARR1 * pointsMultiplier && playerExperiencePoints < requiredPointsForLevels.forPostTest * pointsMultiplier)
+        {
+            handPointIcon.SetActive(true);
+        }
+
+        if (buttonType == "arrange" && playerExperiencePoints < requiredPointsForLevels.forARR1 * pointsMultiplier)
+        {
+            lockScreen.SetActive(true);
+        }
+
+        if (buttonType == "arrange" && playerExperiencePoints >= requiredPointsForLevels.forPostTest * pointsMultiplier)
+        {
+            ribbonIcon.SetActive(true);
+        }
+
 
 
     }
