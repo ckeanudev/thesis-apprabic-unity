@@ -744,12 +744,17 @@ MonoBehaviour:
   levelNumber: 1
   mode: writing
   category: alphabets
+  numberReferenceLevel: 0
   levelTitleText: {fileID: 7521385946680307493}
   levelNumberText: {fileID: 7521385946345722111}
   checkDone: {fileID: 7521385946810225741}
   lockMode: {fileID: 7521385948196896280}
   gameM: {fileID: 0}
+  playerPrefS: {fileID: 0}
   pointsUnlock: 0
+  startColor: {r: 0.007843138, g: 0.1882353, b: 0.2784314, a: 1}
+  endColor: {r: 1, g: 1, b: 1, a: 1}
+  speed: 1.5
 --- !u!1 &7521385948113887888
 GameObject:
   m_ObjectHideFlags: 0

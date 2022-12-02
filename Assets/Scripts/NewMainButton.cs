@@ -39,6 +39,10 @@ public class NewMainButton : MonoBehaviour
 
     private void OnEnable()
     {
+        playerPrefStats = playerPrefS.GetComponent<PlayerStats>();
+        gameManager = gameM.GetComponent<GameManager>();
+        requiredPointsForLevels = requiredPointsS.GetComponent<RequiredPointsForLevels>();
+
         lockScreen.SetActive(false);
         ribbonIcon.SetActive(false);
         handPointIcon.SetActive(false);
@@ -184,13 +188,13 @@ public class NewMainButton : MonoBehaviour
             handPointIcon.SetActive(true);
         }
 
-        if (buttonType == "pronounce letters" && playerExperiencePoints >= requiredPointsForLevels.forPN1)
+        if (buttonType == "pronounce letters" && playerExperiencePoints >= requiredPointsForLevels.forPN1 * pointsMultiplier)
         {
             ribbonIcon.SetActive(true);
         }
 
         // * For Pronounce Numbers Button ---------------------------------
-        if (buttonType == "pronounce numbers" && playerExperiencePoints >= requiredPointsForLevels.forPN1 && playerExperiencePoints < requiredPointsForLevels.forARR1 * pointsMultiplier)
+        if (buttonType == "pronounce numbers" && playerExperiencePoints >= requiredPointsForLevels.forPN1 * pointsMultiplier && playerExperiencePoints < requiredPointsForLevels.forARR1 * pointsMultiplier)
         {
             handPointIcon.SetActive(true);
         }
@@ -240,12 +244,28 @@ public class NewMainButton : MonoBehaviour
 
         if (buttonType == "posttest")
         {
+            //if (buttonType == "posttest" && playerExperiencePoints < requiredPointsForLevels.forPostTest * pointsMultiplier)
+            //{
+            //    Debug.Log("Lock");
+            //}
+            //else
+            //{
+            //    gameManager.pageNumber = 7;
+            //}
             gameManager.pageNumber = 7;
         }
 
         // For Write --------------------------------------------------
         if (buttonType == "write")
         {
+            //if (buttonType == "write" && playerPreTestDone == 0)
+            //{
+            //    Debug.Log("Lock");
+            //}
+            //else
+            //{
+            //    gameManager.mainPageNumber = 2;
+            //}
             gameManager.mainPageNumber = 2;
         }
 
@@ -256,12 +276,28 @@ public class NewMainButton : MonoBehaviour
 
         if (buttonType == "write numbers")
         {
+            //if (buttonType == "write numbers" && playerExperiencePoints < requiredPointsForLevels.forWN1 * pointsMultiplier)
+            //{
+            //    Debug.Log("Lock");
+            //}
+            //else
+            //{
+            //    gameManager.mainPageNumber = 5;
+            //}
             gameManager.mainPageNumber = 5;
         }
 
         // For Pronounce --------------------------------------------------
         if (buttonType == "pronounce")
         {
+            //if (buttonType == "pronounce" && playerExperiencePoints < requiredPointsForLevels.forPL1 * pointsMultiplier)
+            //{
+            //    Debug.Log("Lock");
+            //}
+            //else
+            //{
+            //    gameManager.mainPageNumber = 3;
+            //}
             gameManager.mainPageNumber = 3;
         }
 
@@ -272,12 +308,28 @@ public class NewMainButton : MonoBehaviour
 
         if (buttonType == "pronounce numbers")
         {
+            //if (buttonType == "pronounce numbers" && playerExperiencePoints < requiredPointsForLevels.forPN1 * pointsMultiplier)
+            //{
+            //    Debug.Log("Lock");
+            //}
+            //else
+            //{
+            //    gameManager.mainPageNumber = 7;
+            //}
             gameManager.mainPageNumber = 7;
         }
 
         // For Arrange --------------------------------------------------
         if (buttonType == "arrange")
         {
+            //if (buttonType == "arrange" && playerExperiencePoints < requiredPointsForLevels.forARR1 * pointsMultiplier)
+            //{
+            //    Debug.Log("Lock");
+            //}
+            //else
+            //{
+            //    gameManager.mainPageNumber = 9;
+            //}
             gameManager.mainPageNumber = 9;
         }
 
