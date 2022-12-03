@@ -19,6 +19,14 @@ public class ShowUserScript : MonoBehaviour
     public GameObject pronounceCheckObject;
     public GameObject arrangeCheckObject;
 
+    public GameObject postTestLock;
+    public GameObject writeLock;
+    public GameObject pronounceLock;
+    public GameObject arrangeLock;
+
+    public GameObject bgMusicOn;
+    public GameObject bgMusicOff;
+
     PlayerStats playerPrefStats;
     public GameObject playerPrefS;
 
@@ -65,6 +73,11 @@ public class ShowUserScript : MonoBehaviour
         pronounceCheckObject.SetActive(false);
         arrangeCheckObject.SetActive(false);
 
+        postTestLock.SetActive(false);
+        writeLock.SetActive(false);
+        pronounceLock.SetActive(false);
+        arrangeLock.SetActive(false);
+
         if (playerPrefStats.playerPrefID == 1)
         {
             playerName = PlayerPrefs.GetString("playerPrefUser1");
@@ -106,9 +119,23 @@ public class ShowUserScript : MonoBehaviour
         Debug.Log("Player Pre Test Score: " + playerPreTestScore.ToString());
         Debug.Log("Player Pre Test Done: " + playerPreTestDone.ToString());
 
+        int tempBGMusic = PlayerPrefs.GetInt("backgroundMusicSetting");
+
+        // 1 means OFF
+        // 0 means ON
+        if (tempBGMusic == 0)
+        {
+            bgMusicOff.SetActive(false);
+            bgMusicOn.SetActive(true);
+        }
+        else if (tempBGMusic == 1)
+        {
+            bgMusicOff.SetActive(true);
+            bgMusicOn.SetActive(false);
+        }
 
         playerNameText.text = playerName;
-        expPointsText.text = playerExpPoints.ToString() + " Points";
+        expPointsText.text = playerExpPoints.ToString() + " Points Earned";
 
         // --- For Pre Test ------------------------------------
         if (playerPreTestDone == 1)
@@ -142,6 +169,7 @@ public class ShowUserScript : MonoBehaviour
         }
         else
         {
+            postTestLock.SetActive(true);
             postTestScoreText.text = "Locked";
         }
 
@@ -151,10 +179,20 @@ public class ShowUserScript : MonoBehaviour
             writeCheckObject.SetActive(true);
         }
 
+        if (playerPreTestDone == 0)
+        {
+            writeLock.SetActive(true);
+        }
+
         // --- For Pronounce Modules ------------------------------------
         if (playerExpPoints >= requiredPointsForLevels.forARR1 * pointsMultiplier)
         {
             pronounceCheckObject.SetActive(true);
+        }
+
+        if (playerExpPoints < requiredPointsForLevels.forPL1 * pointsMultiplier)
+        {
+            pronounceLock.SetActive(true);
         }
 
         // --- For Arrange Modules ------------------------------------
@@ -163,6 +201,31 @@ public class ShowUserScript : MonoBehaviour
             arrangeCheckObject.SetActive(true);
         }
 
+        if (playerExpPoints < requiredPointsForLevels.forARR1 * pointsMultiplier)
+        {
+            arrangeLock.SetActive(true);
+        }
+
+    }
+
+    public void SwitchBGMusic ()
+    {
+        int tempBGMusic = PlayerPrefs.GetInt("backgroundMusicSetting");
+
+        // 1 means OFF
+        // 0 means ON
+        if (tempBGMusic == 0)
+        {
+            bgMusicOff.SetActive(true);
+            bgMusicOn.SetActive(false);
+            PlayerPrefs.SetInt("backgroundMusicSetting", 1);
+        }
+        else if (tempBGMusic == 1)
+        {
+            bgMusicOff.SetActive(false);
+            bgMusicOn.SetActive(true);
+            PlayerPrefs.SetInt("backgroundMusicSetting", 0);
+        }
     }
 
     public void ShowPageButton (string type)
@@ -182,7 +245,7 @@ public class ShowUserScript : MonoBehaviour
         }
         else if (type == "write")
         {
-            if (playerPreTestScore > 0)
+            if (playerPreTestDone == 1)
             {
                 mainPageScript.showUser.SetActive(false);
                 gameManager.mainPageNumber = 2;

@@ -752,9 +752,9 @@ MonoBehaviour:
   gameM: {fileID: 0}
   playerPrefS: {fileID: 0}
   pointsUnlock: 0
-  startColor: {r: 0.007843138, g: 0.1882353, b: 0.2784314, a: 1}
+  startColor: {r: 0, g: 0.57254905, b: 0.6627451, a: 1}
   endColor: {r: 1, g: 1, b: 1, a: 1}
-  speed: 1.5
+  speed: 1.3
 --- !u!1 &7521385948113887888
 GameObject:
   m_ObjectHideFlags: 0

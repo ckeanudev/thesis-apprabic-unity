@@ -53,6 +53,8 @@ public class LvlBtn : MonoBehaviour
         lockMode.SetActive(false);
         checkDone.SetActive(false);
 
+        imgComp.color = Color.white;
+
         gameManager = gameM.GetComponent<GameManager>();
 
         playerPrefStats = playerPrefS.GetComponent<PlayerStats>();

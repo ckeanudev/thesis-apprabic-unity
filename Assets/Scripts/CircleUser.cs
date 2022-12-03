@@ -23,7 +23,7 @@ public class CircleUser : MonoBehaviour
         playerPrefStats = playerPrefS.GetComponent<PlayerStats>();
     }
 
-    private void Start()
+    private void OnEnable ()
     {
         avatar1.SetActive(false);
         avatar2.SetActive(false);

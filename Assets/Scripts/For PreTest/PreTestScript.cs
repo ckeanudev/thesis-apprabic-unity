@@ -10,6 +10,12 @@ public class PreTestScript : MonoBehaviour
 
     public TextMeshProUGUI testOrderText;
 
+    public GameObject showTutorial1;
+    public GameObject showTutorial2;
+    public GameObject showTutorial3;
+
+    bool showAllTutorial = true;
+
     public GameObject test1;
     public GameObject test2;
     public GameObject test3;
@@ -44,6 +50,10 @@ public class PreTestScript : MonoBehaviour
     private void OnEnable ()
     {
         playerPrefStats = playerPrefS.GetComponent<PlayerStats>();
+
+        showTutorial1.SetActive(false);
+        showTutorial2.SetActive(false);
+        showTutorial3.SetActive(false);
 
         if (playerPrefStats.playerPrefID == 1)
         {
@@ -89,6 +99,24 @@ public class PreTestScript : MonoBehaviour
         }
     }
 
+    public void CloseTutorial1 ()
+    {
+        showAllTutorial = false;
+        showTutorial1.SetActive(false);
+    }
+
+    public void CloseTutorial2()
+    {
+        showAllTutorial = false;
+        showTutorial2.SetActive(false);
+    }
+
+    public void CloseTutorial3()
+    {
+        showAllTutorial = false;
+        showTutorial3.SetActive(false);
+    }
+
     public void NextTest(int score)
     {
         testNumber += 1;
@@ -116,6 +144,8 @@ public class PreTestScript : MonoBehaviour
                 PlayerPrefs.SetInt("playerPrefUserPostTestScore3", testScore);
         }
 
+        showAllTutorial = true;
+
         Debug.Log("Test Number: " + testNumber.ToString());
         Debug.Log("Test Score: " + testScore.ToString());
     }
@@ -130,6 +160,24 @@ public class PreTestScript : MonoBehaviour
         else
         {
             orderCircle.SetActive(false);
+        }
+
+        if (testType == "pretest")
+        {
+            if (testNumber == 1 && showAllTutorial)
+            {
+                showTutorial1.SetActive(true);
+            }
+
+            if (testNumber == 6 && showAllTutorial)
+            {
+                showTutorial2.SetActive(true);
+            }
+
+            if (testNumber == 11 && showAllTutorial)
+            {
+                showTutorial3.SetActive(true);
+            }
         }
 
         if (testNumber == 1)

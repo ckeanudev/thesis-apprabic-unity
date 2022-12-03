@@ -22,6 +22,7 @@ public class MainPageScript : MonoBehaviour
     public GameObject backButton;
     public TextMeshProUGUI topTitleText;
     public GameObject showUser;
+    public GameObject showSetting;
 
     GameManager gameManager;
     public GameObject gameM;
@@ -29,11 +30,25 @@ public class MainPageScript : MonoBehaviour
     PlayerStats playerPrefStats;
     public GameObject playerPrefS;
 
+    RequiredPointsForLevels requiredPointsForLevels;
+    public GameObject requiredPointsS;
+
+    // *** ----- Player Stats
+    int playerExperiencePoints = 0;
+
+    int playerPreTestScore = 0;
+    int playerPreTestDone = 0;
+
+    int playerPostTestScore = 0;
+    int playerPostTestDone = 0;
+
+    int pointsMultiplier = 15;
+
     private void Awake()
     {
         gameManager = gameM.GetComponent<GameManager>();
-
         playerPrefStats = playerPrefS.GetComponent<PlayerStats>();
+        requiredPointsForLevels = requiredPointsS.GetComponent<RequiredPointsForLevels>();
     }
 
     private void OnEnable()
@@ -47,13 +62,44 @@ public class MainPageScript : MonoBehaviour
         pronunciationNumbers.SetActive(false);
         testMenu.SetActive(false);
         arrangePage.SetActive(false);
+        showSetting.SetActive(false);
 
         backButton.SetActive(false);
+
+        if (playerPrefStats.playerPrefID == 1)
+        {
+            playerExperiencePoints = PlayerPrefs.GetInt("playerPrefUserExperiencePoints1");
+
+            playerPreTestScore = PlayerPrefs.GetInt("playerPrefUserPreTestScore1");
+            playerPreTestDone = PlayerPrefs.GetInt("playerPrefUserPreTestDone1");
+
+            playerPostTestScore = PlayerPrefs.GetInt("playerPrefUserPostTestScore1");
+            playerPostTestDone = PlayerPrefs.GetInt("playerPrefUserPostTestDone1");
+        }
+        else if (playerPrefStats.playerPrefID == 2)
+        {
+            playerExperiencePoints = PlayerPrefs.GetInt("playerPrefUserExperiencePoints2");
+
+            playerPreTestScore = PlayerPrefs.GetInt("playerPrefUserPreTestScore2");
+            playerPreTestDone = PlayerPrefs.GetInt("playerPrefUserPreTestDone2");
+
+            playerPostTestScore = PlayerPrefs.GetInt("playerPrefUserPostTestScore2");
+            playerPostTestDone = PlayerPrefs.GetInt("playerPrefUserPostTestDone2");
+        }
+        else if (playerPrefStats.playerPrefID == 3)
+        {
+            playerExperiencePoints = PlayerPrefs.GetInt("playerPrefUserExperiencePoints3");
+
+            playerPreTestScore = PlayerPrefs.GetInt("playerPrefUserPreTestScore3");
+            playerPreTestDone = PlayerPrefs.GetInt("playerPrefUserPreTestDone3");
+
+            playerPostTestScore = PlayerPrefs.GetInt("playerPrefUserPostTestScore3");
+            playerPostTestDone = PlayerPrefs.GetInt("playerPrefUserPostTestDone3");
+        }
 
         MainPageRender();
 
         Debug.Log("Current User ID: " + playerPrefStats.playerPrefID.ToString());
-
     }
 
     public void ShowPage(int page)
@@ -70,6 +116,18 @@ public class MainPageScript : MonoBehaviour
         else if (show == 0)
         {
             showUser.SetActive(false);
+        }
+    }
+
+    public void ShowSetting(int show)
+    {
+        if (show == 1)
+        {
+            gameManager.mainPageNumber = 10;
+        }
+        else if (show == 0)
+        {
+            gameManager.mainPageNumber = 1;
         }
     }
 
@@ -113,9 +171,13 @@ public class MainPageScript : MonoBehaviour
         }
     }
 
+
+
     private void Update()
     {
         MainPageRender();
+
+
     }
 
     public void MainPageRender()
@@ -129,6 +191,8 @@ public class MainPageScript : MonoBehaviour
             writingNumbers.SetActive(false);
             pronunciationAlphabets.SetActive(false);
             pronunciationNumbers.SetActive(false);
+
+            showSetting.SetActive(false);
 
             testMenu.SetActive(false);
             arrangePage.SetActive(false);
@@ -146,6 +210,8 @@ public class MainPageScript : MonoBehaviour
             pronunciationAlphabets.SetActive(false);
             pronunciationNumbers.SetActive(false);
 
+            showSetting.SetActive(false);
+
             testMenu.SetActive(false);
             arrangePage.SetActive(false);
 
@@ -161,6 +227,8 @@ public class MainPageScript : MonoBehaviour
             writingNumbers.SetActive(false);
             pronunciationAlphabets.SetActive(false);
             pronunciationNumbers.SetActive(false);
+
+            showSetting.SetActive(false);
 
             testMenu.SetActive(false);
             arrangePage.SetActive(false);
@@ -194,6 +262,8 @@ public class MainPageScript : MonoBehaviour
             pronunciationAlphabets.SetActive(false);
             pronunciationNumbers.SetActive(false);
 
+            showSetting.SetActive(false);
+
             testMenu.SetActive(false);
             arrangePage.SetActive(false);
 
@@ -209,6 +279,8 @@ public class MainPageScript : MonoBehaviour
             writingNumbers.SetActive(false);
             pronunciationAlphabets.SetActive(true);
             pronunciationNumbers.SetActive(false);
+
+            showSetting.SetActive(false);
 
             testMenu.SetActive(false);
             arrangePage.SetActive(false);
@@ -226,6 +298,8 @@ public class MainPageScript : MonoBehaviour
             pronunciationAlphabets.SetActive(false);
             pronunciationNumbers.SetActive(true);
 
+            showSetting.SetActive(false);
+
             testMenu.SetActive(false);
             arrangePage.SetActive(false);
 
@@ -241,6 +315,8 @@ public class MainPageScript : MonoBehaviour
             writingNumbers.SetActive(false);
             pronunciationAlphabets.SetActive(false);
             pronunciationNumbers.SetActive(false);
+
+            showSetting.SetActive(false);
 
             testMenu.SetActive(true);
             arrangePage.SetActive(false);
@@ -258,10 +334,30 @@ public class MainPageScript : MonoBehaviour
             pronunciationAlphabets.SetActive(false);
             pronunciationNumbers.SetActive(false);
 
+            showSetting.SetActive(false);
+
             testMenu.SetActive(false);
             arrangePage.SetActive(true);
 
             topTitleText.text = "Arrange";
+            backButton.SetActive(true);
+        }
+        else if (gameManager.mainPageNumber == 10)
+        {
+            mainMenu.SetActive(false);
+            writingMenu.SetActive(false);
+            pronunciationMenu.SetActive(false);
+            writingAlphabets.SetActive(false);
+            writingNumbers.SetActive(false);
+            pronunciationAlphabets.SetActive(false);
+            pronunciationNumbers.SetActive(false);
+
+            showSetting.SetActive(true);
+
+            testMenu.SetActive(false);
+            arrangePage.SetActive(false);
+
+            topTitleText.text = "Setting";
             backButton.SetActive(true);
         }
     }

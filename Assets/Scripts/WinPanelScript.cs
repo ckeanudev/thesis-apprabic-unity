@@ -123,27 +123,6 @@ public class WinPanelScript : MonoBehaviour
             else if (typeMode == "arrange")
             {
                 ForArrange();
-                //if (arrangeUIScript.userScore == 3)
-                //{
-                //    pointsOblong.text = "+3 points";
-                //    banner3Star.SetActive(true);
-                //    banner2Star.SetActive(false);
-                //    banner1Star.SetActive(false);
-                //}
-                //else if (arrangeUIScript.userScore == 2)
-                //{
-                //    pointsOblong.text = "+2 points";
-                //    banner3Star.SetActive(false);
-                //    banner2Star.SetActive(true);
-                //    banner1Star.SetActive(false);
-                //}
-                //else if (arrangeUIScript.userScore == 1)
-                //{
-                //    pointsOblong.text = "+1 points";
-                //    banner3Star.SetActive(false);
-                //    banner2Star.SetActive(false);
-                //    banner1Star.SetActive(true);
-                //}
             }
         }
         else if (winType == "unwin")
@@ -180,49 +159,142 @@ public class WinPanelScript : MonoBehaviour
 
     public void ForPlusPointsText(bool add)
     {
+        if (typeMode == "writing")
+        {
+            if (writingUIScript.userScore == 3)
+            {
+                if (add)
+                {
+                    pointsOblong.text = "+3 points";
+                    ForAddingExperience(3);
+                }
+                else
+                    pointsOblong.text = "+0 points";
+
+                banner3Star.SetActive(true);
+                banner2Star.SetActive(false);
+                banner1Star.SetActive(false);
+            }
+            else if (writingUIScript.userScore == 2)
+            {
+                if (add)
+                {
+                    pointsOblong.text = "+2 points";
+                    ForAddingExperience(2);
+                }
+                else
+                    pointsOblong.text = "+0 points";
+
+                banner3Star.SetActive(false);
+                banner2Star.SetActive(true);
+                banner1Star.SetActive(false);
+            }
+            else if (writingUIScript.userScore == 1)
+            {
+                if (add)
+                {
+                    pointsOblong.text = "+1 points";
+                    ForAddingExperience(1);
+                }
+                else
+                    pointsOblong.text = "+0 points";
+
+                banner3Star.SetActive(false);
+                banner2Star.SetActive(false);
+                banner1Star.SetActive(true);
+            }
+        }
+        else if (typeMode == "pronunciation")
+        {
+            if (pronouneUIScript.userScore == 3)
+            {
+                if (add)
+                {
+                    pointsOblong.text = "+3 points";
+                    ForAddingExperience(3);
+                }
+                else
+                    pointsOblong.text = "+0 points";
+
+                banner3Star.SetActive(true);
+                banner2Star.SetActive(false);
+                banner1Star.SetActive(false);
+            }
+            else if (pronouneUIScript.userScore == 2)
+            {
+                if (add)
+                {
+                    pointsOblong.text = "+2 points";
+                    ForAddingExperience(2);
+                }
+                else
+                    pointsOblong.text = "+0 points";
+
+                banner3Star.SetActive(false);
+                banner2Star.SetActive(true);
+                banner1Star.SetActive(false);
+            }
+            else if (pronouneUIScript.userScore == 1)
+            {
+                if (add)
+                {
+                    pointsOblong.text = "+1 points";
+                    ForAddingExperience(1);
+                }
+                else
+                    pointsOblong.text = "+0 points";
+
+                banner3Star.SetActive(false);
+                banner2Star.SetActive(false);
+                banner1Star.SetActive(true);
+            }
+        }
+        else if (typeMode == "arrange")
+        {
+            if (arrangeUIScript.userScore == 3)
+            {
+                if (add)
+                {
+                    pointsOblong.text = "+3 points";
+                    ForAddingExperience(3);
+                }
+                else
+                    pointsOblong.text = "+0 points";
+
+                banner3Star.SetActive(true);
+                banner2Star.SetActive(false);
+                banner1Star.SetActive(false);
+            }
+            else if (arrangeUIScript.userScore == 2)
+            {
+                if (add)
+                {
+                    pointsOblong.text = "+2 points";
+                    ForAddingExperience(2);
+                }
+                else
+                    pointsOblong.text = "+0 points";
+
+                banner3Star.SetActive(false);
+                banner2Star.SetActive(true);
+                banner1Star.SetActive(false);
+            }
+            else if (arrangeUIScript.userScore == 1)
+            {
+                if (add)
+                {
+                    pointsOblong.text = "+1 points";
+                    ForAddingExperience(1);
+                }
+                else
+                    pointsOblong.text = "+0 points";
+
+                banner3Star.SetActive(false);
+                banner2Star.SetActive(false);
+                banner1Star.SetActive(true);
+            }
+        }
         
-        if (writingUIScript.userScore == 3)
-        {
-            if (add)
-            {
-                pointsOblong.text = "+3 points";
-                ForAddingExperience(3);
-            }
-            else
-                pointsOblong.text = "+0 points";
-
-            banner3Star.SetActive(true);
-            banner2Star.SetActive(false);
-            banner1Star.SetActive(false);
-        }
-        else if (writingUIScript.userScore == 2)
-        {
-            if (add)
-            {
-                pointsOblong.text = "+2 points";
-                ForAddingExperience(2);
-            }
-            else
-                pointsOblong.text = "+0 points";
-
-            banner3Star.SetActive(false);
-            banner2Star.SetActive(true);
-            banner1Star.SetActive(false);
-        }
-        else if (writingUIScript.userScore == 1)
-        {
-            if (add)
-            {
-                pointsOblong.text = "+1 points";
-                ForAddingExperience(1);
-            }
-            else
-                pointsOblong.text = "+0 points";
-
-            banner3Star.SetActive(false);
-            banner2Star.SetActive(false);
-            banner1Star.SetActive(true);
-        }
     }
 
     public void ForWrite(string category)

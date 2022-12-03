@@ -97,6 +97,12 @@ public class OpeningPage : MonoBehaviour
         contentPage = 4;
     }
 
+    public void CloseCreateUser ()
+    {
+        userAppContent.SetActive(false);
+        //contentPage = 0;
+    }
+
     public void ShowContent(int content)
     {
         userAppContent.SetActive(true);
@@ -112,8 +118,24 @@ public class OpeningPage : MonoBehaviour
         }
         else if (content == 2)
         {
+            string firstPlayer = PlayerPrefs.GetString("playerPrefUser1");
+            string secondPlayer = PlayerPrefs.GetString("playerPrefUser2");
+            string thirdPlayer = PlayerPrefs.GetString("playerPrefUser3");
+
             // For Choosing Avatar
-            contentPage = 2;
+
+            if (nameText == "" || nameText == null)
+            {
+                warningText.text = "Enter your name please";
+            }
+            else if (nameText.ToLower() == firstPlayer.ToLower() || nameText.ToLower() == secondPlayer.ToLower() || nameText.ToLower() == thirdPlayer.ToLower())
+            {
+                warningText.text = "Name exist already";
+            }
+            else
+            {
+                contentPage = 2;
+            }
         }
         else if (content == 3)
         {
