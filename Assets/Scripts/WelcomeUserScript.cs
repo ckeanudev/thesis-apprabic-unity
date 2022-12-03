@@ -9,6 +9,8 @@ public class WelcomeUserScript : MonoBehaviour
     public GameObject welcomeUser1;
     public GameObject welcomeUser2;
 
+    public AudioSource buttonSoundEffect;
+
     private void OnEnable ()
     {
         welcomeUser1.SetActive(true);
@@ -17,6 +19,7 @@ public class WelcomeUserScript : MonoBehaviour
 
     public void WelcomeUserNextBtn ()
     {
+        buttonSoundEffect.Play();
         welcomeUser1.SetActive(false);
         welcomeUser2.SetActive(true);
     }

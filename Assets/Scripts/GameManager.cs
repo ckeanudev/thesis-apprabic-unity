@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject arrangePage;
 
+    public AudioSource buttonSoundEffect;
 
     public int pageNumber = 0;
     public int mainPageNumber = 1;

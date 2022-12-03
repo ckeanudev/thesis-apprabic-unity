@@ -12,6 +12,8 @@ public class OpeningPage : MonoBehaviour
     public GameObject loadUsersContent;
     public GameObject loadingContent;
 
+    public AudioSource buttonSoundEffect;
+
     SQLiteScript sqliteScript;
     public GameObject scriptDB;
 
@@ -27,6 +29,16 @@ public class OpeningPage : MonoBehaviour
 
     void OnEnable()
     {
+        userAppContent.SetActive(false);
+        createUserContent.SetActive(false);
+        chooseAvatarContent.SetActive(false);
+        loadUsersContent.SetActive(false);
+        loadingContent.SetActive(false);
+
+        contentPage = 1;
+
+        nameText = "";
+
         sqliteScript = scriptDB.GetComponent<SQLiteScript>();
  
         playerPrefStats = playerPrefS.GetComponent<PlayerStats>();
@@ -43,6 +55,7 @@ public class OpeningPage : MonoBehaviour
 
     public void GetAvatarID(int avatar)
     {
+        buttonSoundEffect.Play();
         avatarID = avatar;
 
         //Debug.Log(avatarID);
@@ -76,6 +89,8 @@ public class OpeningPage : MonoBehaviour
 
     public void ForStartButton ()
     {
+        buttonSoundEffect.Play();
+
         string firstPlayer = PlayerPrefs.GetString("playerPrefUser1");
         string secondPlayer = PlayerPrefs.GetString("playerPrefUser2");
         string thirdPlayer = PlayerPrefs.GetString("playerPrefUser3");
@@ -93,18 +108,21 @@ public class OpeningPage : MonoBehaviour
 
     public void ForChoosePlayerBtn (int id)
     {
+        buttonSoundEffect.Play();
         playerPrefStats.playerPrefID = id;
         contentPage = 4;
     }
 
     public void CloseCreateUser ()
     {
+        buttonSoundEffect.Play();
         userAppContent.SetActive(false);
         //contentPage = 0;
     }
 
     public void ShowContent(int content)
     {
+        buttonSoundEffect.Play();
         userAppContent.SetActive(true);
 
         if (content == 0)
@@ -123,10 +141,9 @@ public class OpeningPage : MonoBehaviour
             string thirdPlayer = PlayerPrefs.GetString("playerPrefUser3");
 
             // For Choosing Avatar
-
-            if (nameText == "" || nameText == null)
+            if (nameText.Length < 3)
             {
-                warningText.text = "Enter your name please";
+                warningText.text = "Name should be atleast 3 characters";
             }
             else if (nameText.ToLower() == firstPlayer.ToLower() || nameText.ToLower() == secondPlayer.ToLower() || nameText.ToLower() == thirdPlayer.ToLower())
             {

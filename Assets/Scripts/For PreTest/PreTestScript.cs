@@ -38,6 +38,9 @@ public class PreTestScript : MonoBehaviour
     PlayerStats playerPrefStats;
     public GameObject playerPrefS;
 
+    GameManager gameManager;
+    public GameObject gameM;
+
     public int testNumber = 1;
     public int testScore = 0;
 
@@ -50,6 +53,7 @@ public class PreTestScript : MonoBehaviour
     private void OnEnable ()
     {
         playerPrefStats = playerPrefS.GetComponent<PlayerStats>();
+        gameManager = gameM.GetComponent<GameManager>();
 
         showTutorial1.SetActive(false);
         showTutorial2.SetActive(false);
@@ -88,6 +92,12 @@ public class PreTestScript : MonoBehaviour
                 testScore = playerPreTestScore;
                 testNumber = 16;
             }
+
+            if (playerPreTestDone == 0)
+            {
+                testScore = 0;
+                testNumber = 1;
+            }
         }
         else if (testType == "posttest")
         {
@@ -96,29 +106,39 @@ public class PreTestScript : MonoBehaviour
                 testScore = playerPostTestScore;
                 testNumber = 16;
             }
+
+            if (playerPostTestDone == 0)
+            {
+                testScore = 0;
+                testNumber = 1;
+            }
         }
     }
 
     public void CloseTutorial1 ()
     {
+        gameManager.buttonSoundEffect.Play();
         showAllTutorial = false;
         showTutorial1.SetActive(false);
     }
 
     public void CloseTutorial2()
     {
+        gameManager.buttonSoundEffect.Play();
         showAllTutorial = false;
         showTutorial2.SetActive(false);
     }
 
     public void CloseTutorial3()
     {
+        gameManager.buttonSoundEffect.Play();
         showAllTutorial = false;
         showTutorial3.SetActive(false);
     }
 
     public void NextTest(int score)
     {
+        gameManager.buttonSoundEffect.Play();
         testNumber += 1;
         testScore += score;
 

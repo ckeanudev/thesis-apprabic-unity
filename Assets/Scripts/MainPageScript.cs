@@ -63,6 +63,7 @@ public class MainPageScript : MonoBehaviour
         testMenu.SetActive(false);
         arrangePage.SetActive(false);
         showSetting.SetActive(false);
+        showUser.SetActive(false);
 
         backButton.SetActive(false);
 
@@ -104,11 +105,13 @@ public class MainPageScript : MonoBehaviour
 
     public void ShowPage(int page)
     {
+        gameManager.buttonSoundEffect.Play();
         gameManager.mainPageNumber = page;
     }
 
     public void ShowUser(int show)
     {
+        gameManager.buttonSoundEffect.Play();
         if (show == 1)
         {
             showUser.SetActive(true);
@@ -121,6 +124,7 @@ public class MainPageScript : MonoBehaviour
 
     public void ShowSetting(int show)
     {
+        gameManager.buttonSoundEffect.Play();
         if (show == 1)
         {
             gameManager.mainPageNumber = 10;
@@ -133,6 +137,7 @@ public class MainPageScript : MonoBehaviour
 
     public void BackPage()
     {
+        gameManager.buttonSoundEffect.Play();
         if (gameManager.mainPageNumber == 1)
         {
             return;

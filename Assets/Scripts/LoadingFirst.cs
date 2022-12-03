@@ -11,7 +11,7 @@ public class LoadingFirst : MonoBehaviour
     public GameObject gameM;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         gameManager = gameM.GetComponent<GameManager>();
         openingPage = openingP.GetComponent<OpeningPage>();

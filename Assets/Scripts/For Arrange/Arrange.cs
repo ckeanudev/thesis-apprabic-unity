@@ -24,6 +24,8 @@ public class Arrange : MonoBehaviour
 
     public GameObject doneButton;
 
+    public AudioSource buttonSoundEffect;
+
     float currentTime = 0;
     float currentTimeStop = 0;
     bool isTimerStart = false;
@@ -52,6 +54,7 @@ public class Arrange : MonoBehaviour
 
     public void ArrangeDoneButton()
     {
+        buttonSoundEffect.Play();
         timerStopFunction();
         doneButton.SetActive(false);
 

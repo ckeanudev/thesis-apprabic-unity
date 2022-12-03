@@ -68,6 +68,7 @@ public class ArrangeUIScript : MonoBehaviour
 
     public void BackToChooseLevel()
     {
+        gameManager.buttonSoundEffect.Play();
         showWinDialog = false;
         sufficientPointsObject.SetActive(false);
         gameManager.pageNumber = 1;
@@ -332,6 +333,7 @@ public class ArrangeUIScript : MonoBehaviour
 
     public void AddWritingLevel()
     {
+        gameManager.buttonSoundEffect.Play();
         gameManager.arrangeLevel += 1;
         showWinDialog = false;
     }
@@ -353,12 +355,14 @@ public class ArrangeUIScript : MonoBehaviour
 
     public void CloseSufficientObject()
     {
+        gameManager.buttonSoundEffect.Play();
         sufficientPointsObject.SetActive(false);
         pressNextButton = true;
     }
 
     public void RetryBtn()
     {
+        gameManager.buttonSoundEffect.Play();
         sufficientPointsObject.SetActive(false);
         pressNextButton = true;
         showWinDialog = false;
@@ -435,6 +439,7 @@ public class ArrangeUIScript : MonoBehaviour
 
     public void BackFromArrange()
     {
+        gameManager.buttonSoundEffect.Play();
         gameManager.mainPageNumber = 9;
         gameManager.pageNumber = 1;
         lvl1.SetActive(false);
@@ -841,6 +846,7 @@ public class ArrangeUIScript : MonoBehaviour
 
     public void ShowVideo(int num)
     {
+        gameManager.buttonSoundEffect.Play();
         if (num == 1)
         {
             videoObject.SetActive(true);

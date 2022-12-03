@@ -27,6 +27,20 @@ public class ShowUserScript : MonoBehaviour
     public GameObject bgMusicOn;
     public GameObject bgMusicOff;
 
+    public GameObject deleteUserObject;
+
+    public GameObject noDeleteBtn;
+    public GameObject yesDeleteBtn;
+
+    public GameObject deleteLoading;
+
+    public GameObject signoutUserObject;
+
+    public GameObject noSignOutBtn;
+    public GameObject yesSignOutBtn;
+
+    public GameObject signoutLoading;
+
     PlayerStats playerPrefStats;
     public GameObject playerPrefS;
 
@@ -77,6 +91,13 @@ public class ShowUserScript : MonoBehaviour
         writeLock.SetActive(false);
         pronounceLock.SetActive(false);
         arrangeLock.SetActive(false);
+
+        deleteUserObject.SetActive(false);
+
+        signoutUserObject.SetActive(false);
+
+        //noDeleteBtn.SetActive(true);
+        //yesDeleteBtn.SetActive(true);
 
         if (playerPrefStats.playerPrefID == 1)
         {
@@ -208,8 +229,122 @@ public class ShowUserScript : MonoBehaviour
 
     }
 
+    public void ShowSignOutObject (int num)
+    {
+        gameManager.buttonSoundEffect.Play();
+        if (num == 1)
+        {
+            signoutUserObject.SetActive(true);
+            signoutLoading.SetActive(false);
+            noSignOutBtn.SetActive(true);
+            yesSignOutBtn.SetActive(true);
+        }
+
+        if (num == 0)
+        {
+            signoutUserObject.SetActive(false);
+        }
+    }
+
+    public void SignOutConfirm ()
+    {
+        gameManager.buttonSoundEffect.Play();
+        noSignOutBtn.SetActive(false);
+        yesSignOutBtn.SetActive(false);
+
+        signoutLoading.SetActive(true);
+
+
+        StartCoroutine(SignoutDelayUser());
+    }
+
+    public IEnumerator SignoutDelayUser()
+    {
+        yield return new WaitForSeconds(2f);
+        playerPrefStats.playerPrefID = 0;
+        // * * * Go Back in the Opening Page
+        gameManager.pageNumber = 0;
+        gameManager.mainPageNumber = 1;
+    }
+
+    public void ShowDeleteUserObject (int num)
+    {
+        gameManager.buttonSoundEffect.Play();
+        if (num == 1)
+        {
+            deleteUserObject.SetActive(true);
+            deleteLoading.SetActive(false);
+            noDeleteBtn.SetActive(true);
+            yesDeleteBtn.SetActive(true);
+        }
+
+        if (num == 0)
+        {
+            deleteUserObject.SetActive(false);
+        }
+    }
+
+    public void DeleteUserConfirm ()
+    {
+        gameManager.buttonSoundEffect.Play();
+        noDeleteBtn.SetActive(false);
+        yesDeleteBtn.SetActive(false);
+
+        deleteLoading.SetActive(true);
+
+        StartCoroutine(DeleteDelayUser());
+    }
+
+    public IEnumerator DeleteDelayUser ()
+    {
+        yield return new WaitForSeconds(2f);
+
+        if (playerPrefStats.playerPrefID == 1)
+        {
+            PlayerPrefs.SetString("playerPrefUser1", "");
+
+            PlayerPrefs.SetInt("playerPrefUserExperiencePoints1", 0);
+
+            PlayerPrefs.SetInt("playerPrefUserPreTestScore1", 0);
+            PlayerPrefs.SetInt("playerPrefUserPreTestDone1", 0);
+
+            PlayerPrefs.SetInt("playerPrefUserPostTestScore1", 0);
+            PlayerPrefs.SetInt("playerPrefUserPostTestDone1", 0);
+        }
+        else if (playerPrefStats.playerPrefID == 2)
+        {
+            PlayerPrefs.SetString("playerPrefUser2", "");
+
+            PlayerPrefs.SetInt("playerPrefUserExperiencePoints2", 0);
+
+            PlayerPrefs.SetInt("playerPrefUserPreTestScore2", 0);
+            PlayerPrefs.SetInt("playerPrefUserPreTestDone2", 0);
+
+            PlayerPrefs.SetInt("playerPrefUserPostTestScore2", 0);
+            PlayerPrefs.SetInt("playerPrefUserPostTestDone2", 0);
+        }
+        else if (playerPrefStats.playerPrefID == 3)
+        {
+            PlayerPrefs.SetString("playerPrefUser3", "");
+
+            PlayerPrefs.SetInt("playerPrefUserExperiencePoints3", 0);
+
+            PlayerPrefs.SetInt("playerPrefUserPreTestScore3", 0);
+            PlayerPrefs.SetInt("playerPrefUserPreTestDone3", 0);
+
+            PlayerPrefs.SetInt("playerPrefUserPostTestScore3", 0);
+            PlayerPrefs.SetInt("playerPrefUserPostTestDone3", 0);
+        }
+
+        playerPrefStats.playerPrefID = 0;
+        // * * * Go Back in the Opening Page
+        gameManager.pageNumber = 0;
+        gameManager.mainPageNumber = 1;
+    }
+
     public void SwitchBGMusic ()
     {
+        gameManager.buttonSoundEffect.Play();
         int tempBGMusic = PlayerPrefs.GetInt("backgroundMusicSetting");
 
         // 1 means OFF
@@ -232,6 +367,7 @@ public class ShowUserScript : MonoBehaviour
     {
         if (type == "pretest")
         {
+            gameManager.buttonSoundEffect.Play();
             mainPageScript.showUser.SetActive(false);
             gameManager.pageNumber = 6;
         }
@@ -239,6 +375,7 @@ public class ShowUserScript : MonoBehaviour
         {
             if (playerExpPoints >= requiredPointsForLevels.forPostTest * pointsMultiplier)
             {
+                gameManager.buttonSoundEffect.Play();
                 mainPageScript.showUser.SetActive(false);
                 gameManager.pageNumber = 7;
             }
@@ -247,6 +384,7 @@ public class ShowUserScript : MonoBehaviour
         {
             if (playerPreTestDone == 1)
             {
+                gameManager.buttonSoundEffect.Play();
                 mainPageScript.showUser.SetActive(false);
                 gameManager.mainPageNumber = 2;
             }
@@ -255,6 +393,7 @@ public class ShowUserScript : MonoBehaviour
         {
             if (playerExpPoints >= requiredPointsForLevels.forPL1 * pointsMultiplier)
             {
+                gameManager.buttonSoundEffect.Play();
                 mainPageScript.showUser.SetActive(false);
                 gameManager.mainPageNumber = 3;
             }
@@ -263,6 +402,7 @@ public class ShowUserScript : MonoBehaviour
         {
             if (playerExpPoints >= requiredPointsForLevels.forARR1 * pointsMultiplier)
             {
+                gameManager.buttonSoundEffect.Play();
                 mainPageScript.showUser.SetActive(false);
                 gameManager.mainPageNumber = 9;
             }

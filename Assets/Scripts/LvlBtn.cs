@@ -130,6 +130,7 @@ public class LvlBtn : MonoBehaviour
         }
         else
         {
+            gameManager.buttonSoundEffect.Play();
             if (mode == "writing")
             {
                 if (category == "alphabets")

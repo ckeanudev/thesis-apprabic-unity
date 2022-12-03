@@ -231,14 +231,18 @@ public class NewMainButton : MonoBehaviour
 
     public void ShowPage()
     {
+
         // For Test --------------------------------------------------
         if (buttonType == "test")
         {
+            gameManager.buttonSoundEffect.Play();
             gameManager.mainPageNumber = 8;
+
         }
 
         if (buttonType == "pretest")
         {
+            gameManager.buttonSoundEffect.Play();
             gameManager.pageNumber = 6;
         }
 
@@ -252,6 +256,7 @@ public class NewMainButton : MonoBehaviour
             //{
             //    gameManager.pageNumber = 7;
             //}
+            gameManager.buttonSoundEffect.Play();
             gameManager.pageNumber = 7;
         }
 
@@ -266,11 +271,13 @@ public class NewMainButton : MonoBehaviour
             //{
             //    gameManager.mainPageNumber = 2;
             //}
+            gameManager.buttonSoundEffect.Play();
             gameManager.mainPageNumber = 2;
         }
 
         if (buttonType == "write letters")
         {
+            gameManager.buttonSoundEffect.Play();
             gameManager.mainPageNumber = 4;
         }
 
@@ -284,6 +291,7 @@ public class NewMainButton : MonoBehaviour
             //{
             //    gameManager.mainPageNumber = 5;
             //}
+            gameManager.buttonSoundEffect.Play();
             gameManager.mainPageNumber = 5;
         }
 
@@ -298,11 +306,13 @@ public class NewMainButton : MonoBehaviour
             //{
             //    gameManager.mainPageNumber = 3;
             //}
+            gameManager.buttonSoundEffect.Play();
             gameManager.mainPageNumber = 3;
         }
 
         if (buttonType == "pronounce letters")
         {
+            gameManager.buttonSoundEffect.Play();
             gameManager.mainPageNumber = 6;
         }
 
@@ -316,6 +326,7 @@ public class NewMainButton : MonoBehaviour
             //{
             //    gameManager.mainPageNumber = 7;
             //}
+            gameManager.buttonSoundEffect.Play();
             gameManager.mainPageNumber = 7;
         }
 
@@ -330,6 +341,7 @@ public class NewMainButton : MonoBehaviour
             //{
             //    gameManager.mainPageNumber = 9;
             //}
+            gameManager.buttonSoundEffect.Play();
             gameManager.mainPageNumber = 9;
         }
 

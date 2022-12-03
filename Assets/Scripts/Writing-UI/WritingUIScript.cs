@@ -81,7 +81,8 @@ public class WritingUIScript : MonoBehaviour
     // For showing the video per each levels
     public void ShowVideo(int number)
     {
-        if(number == 1)
+        gameManager.buttonSoundEffect.Play();
+        if (number == 1)
         {
             videoObject.SetActive(true);
         }
@@ -94,6 +95,7 @@ public class WritingUIScript : MonoBehaviour
     // -------------------------------- For Win Panel Button
     public void BackToChooseLevel()
     {
+        gameManager.buttonSoundEffect.Play();
         sufficientPointsObject.SetActive(false);
         showWinDialog = false;
         if (writingCategoryType == "alphabets")
@@ -620,6 +622,7 @@ public class WritingUIScript : MonoBehaviour
 
     public void AddWritingLevel ()
     {
+        gameManager.buttonSoundEffect.Play();
         gameManager.writingLevel += 1;
         showWinDialog = false;
     }
@@ -641,12 +644,14 @@ public class WritingUIScript : MonoBehaviour
 
     public void CloseSufficientObject()
     {
+        gameManager.buttonSoundEffect.Play();
         sufficientPointsObject.SetActive(false);
         pressNextButton = true;
     }
 
     public void RetryBtn()
     {
+        gameManager.buttonSoundEffect.Play();
         sufficientPointsObject.SetActive(false);
         pressNextButton = true;
         showWinDialog = false;
@@ -713,6 +718,7 @@ public class WritingUIScript : MonoBehaviour
 
     public void BackFromWritingA()
     {
+        gameManager.buttonSoundEffect.Play();
         gameManager.mainPageNumber = 4;
         gameManager.pageNumber = 1;
         lvl1.SetActive(false);
@@ -750,6 +756,7 @@ public class WritingUIScript : MonoBehaviour
 
     public void BackFromWritingN()
     {
+        gameManager.buttonSoundEffect.Play();
         gameManager.mainPageNumber = 5;
         gameManager.pageNumber = 1;
         lvl1.SetActive(false);

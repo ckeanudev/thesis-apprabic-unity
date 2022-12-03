@@ -26,6 +26,8 @@ public class Pronounce : MonoBehaviour
     public GameObject choiceContainer2;
     public GameObject choiceContainer3;
 
+    public AudioSource buttonSoundEffect;
+
     public int averageCountTime;
     float currentTime = 0;
     float currentTimeStop = 0;
@@ -70,6 +72,7 @@ public class Pronounce : MonoBehaviour
 
     public void NextPage()
     {
+        buttonSoundEffect.Play();
         firstPage.SetActive(false);
         secondPage.SetActive(true); 
         timerStartFunction();
@@ -105,6 +108,7 @@ public class Pronounce : MonoBehaviour
         audioContainer3.SetActive(false);
         choiceContainer3.SetActive(false);
 
+        buttonSoundEffect.Play();
         timerStopFunction();
         if (num == 1)
         {

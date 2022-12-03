@@ -82,6 +82,7 @@ public class PronouneUIScript : MonoBehaviour
     // For showing the video per each levels
     public void ShowVideo(int number)
     {
+        gameManager.buttonSoundEffect.Play();
         if (number == 1)
         {
             videoObject.SetActive(true);
@@ -95,6 +96,7 @@ public class PronouneUIScript : MonoBehaviour
     // -------------------------------- For Win Panel Button >>>>
     public void BackToChooseLevel()
     {
+        gameManager.buttonSoundEffect.Play();
         sufficientPointsObject.SetActive(false);
         showWinDialog = false;
         if (pronunciationCategoryType == "alphabets")
@@ -620,6 +622,7 @@ public class PronouneUIScript : MonoBehaviour
 
     public void AddWritingLevel()
     {
+        gameManager.buttonSoundEffect.Play();
         gameManager.pronuncationLevel += 1;
         showWinDialog = false;
     }
@@ -641,12 +644,14 @@ public class PronouneUIScript : MonoBehaviour
 
     public void CloseSufficientObject()
     {
+        gameManager.buttonSoundEffect.Play();
         sufficientPointsObject.SetActive(false);
         pressNextButton = true;
     }
 
     public void RetryBtn()
     {
+        gameManager.buttonSoundEffect.Play();
         sufficientPointsObject.SetActive(false);
         pressNextButton = true;
         showWinDialog = false;
@@ -687,6 +692,7 @@ public class PronouneUIScript : MonoBehaviour
     // -------------------------------- For Back Button
     public void BackFromPronunciationA()
     {
+        gameManager.buttonSoundEffect.Play();
         gameManager.mainPageNumber = 6;
         gameManager.pageNumber = 1;
         lvl1.SetActive(false);
@@ -724,6 +730,7 @@ public class PronouneUIScript : MonoBehaviour
 
     public void BackFromPronunciationN()
     {
+        gameManager.buttonSoundEffect.Play();
         gameManager.mainPageNumber = 7;
         gameManager.pageNumber = 1;
         lvl1.SetActive(false);

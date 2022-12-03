@@ -11,6 +11,8 @@ public class ForWelcomeScript : MonoBehaviour
     public GameObject welcomeObject2;
     public GameObject welcomeObject3;
 
+    public AudioSource buttonSoundEffect;
+
     PlayerStats playerPrefStats;
     public GameObject playerPrefS;
 
@@ -129,17 +131,20 @@ public class ForWelcomeScript : MonoBehaviour
 
     public void CloseWelcomeObject ()
     {
+        buttonSoundEffect.Play();
         welcomeObject.SetActive(false);
     }
 
 
     public void CloseWelcomeObject2()
     {
+        buttonSoundEffect.Play();
         welcomeObject2.SetActive(false);
     }
 
     public void CloseWelcomeObject3()
     {
+        buttonSoundEffect.Play();
         welcomeObject3.SetActive(false);
     }
 }
