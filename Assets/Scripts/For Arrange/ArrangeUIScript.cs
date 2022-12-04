@@ -69,6 +69,7 @@ public class ArrangeUIScript : MonoBehaviour
     public void BackToChooseLevel()
     {
         gameManager.buttonSoundEffect.Play();
+        pressNextButton = true;
         showWinDialog = false;
         sufficientPointsObject.SetActive(false);
         gameManager.pageNumber = 1;

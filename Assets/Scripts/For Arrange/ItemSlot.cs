@@ -16,6 +16,8 @@ public class ItemSlot : MonoBehaviour, IDropHandler
     TestScript arrangeTest;
     public GameObject arrangeT;
 
+    public AudioSource dropSoundEffect;
+
     private void OnEnable()
     {
         if(isTest)
@@ -48,6 +50,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
         if (eventData.pointerDrag != null)
         {
             //Debug.Log("DROP!");
+            dropSoundEffect.Play();
             eventData.pointerDrag.GetComponent<RectTransform>().transform.position = new Vector2(dropPosition.x, dropPosition.y);
 
             //Debug.Log(eventData.pointerDrag.GetComponent<DragArrange>().orderDrag);

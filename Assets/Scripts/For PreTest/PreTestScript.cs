@@ -41,7 +41,7 @@ public class PreTestScript : MonoBehaviour
     GameManager gameManager;
     public GameObject gameM;
 
-    public int testNumber = 1;
+    public int testNumber = 0;
     public int testScore = 0;
 
     int playerPreTestScore = 0;
@@ -50,14 +50,42 @@ public class PreTestScript : MonoBehaviour
     int playerPostTestScore = 0;
     int playerPostTestDone = 0;
 
+    private void Awake ()
+    {
+        playerPrefStats = playerPrefS.GetComponent<PlayerStats>();
+        gameManager = gameM.GetComponent<GameManager>();
+    }
+
     private void OnEnable ()
     {
         playerPrefStats = playerPrefS.GetComponent<PlayerStats>();
         gameManager = gameM.GetComponent<GameManager>();
 
-        showTutorial1.SetActive(false);
-        showTutorial2.SetActive(false);
-        showTutorial3.SetActive(false);
+        test1.SetActive(false);
+        test2.SetActive(false);
+        test3.SetActive(false);
+        test4.SetActive(false);
+        test5.SetActive(false);
+        test6.SetActive(false);
+        test7.SetActive(false);
+        test8.SetActive(false);
+        test9.SetActive(false);
+        test10.SetActive(false);
+        test11.SetActive(false);
+        test12.SetActive(false);
+        test13.SetActive(false);
+        test14.SetActive(false);
+        test15.SetActive(false);
+        testResult.SetActive(false);
+
+        if (showTutorial1 != null)
+            showTutorial1.SetActive(false);
+
+        if (showTutorial2 != null)
+            showTutorial2.SetActive(false);
+
+        if (showTutorial3 != null)
+            showTutorial3.SetActive(false);
 
         if (playerPrefStats.playerPrefID == 1)
         {
@@ -139,6 +167,7 @@ public class PreTestScript : MonoBehaviour
     public void NextTest(int score)
     {
         gameManager.buttonSoundEffect.Play();
+
         testNumber += 1;
         testScore += score;
 
@@ -186,17 +215,20 @@ public class PreTestScript : MonoBehaviour
         {
             if (testNumber == 1 && showAllTutorial)
             {
-                showTutorial1.SetActive(true);
+                if (showTutorial1 != null)
+                    showTutorial1.SetActive(true);
             }
 
             if (testNumber == 6 && showAllTutorial)
             {
-                showTutorial2.SetActive(true);
+                if (showTutorial2 != null)
+                    showTutorial2.SetActive(true);
             }
 
             if (testNumber == 11 && showAllTutorial)
             {
-                showTutorial3.SetActive(true);
+                if (showTutorial3 != null)
+                    showTutorial3.SetActive(true);
             }
         }
 

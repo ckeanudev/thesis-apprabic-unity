@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public GameObject arrangePage;
 
     public AudioSource buttonSoundEffect;
+    public AudioSource backgroundMusic;
+    public AudioSource lockSoundEffect;
 
     public int pageNumber = 0;
     public int mainPageNumber = 1;
@@ -28,6 +30,26 @@ public class GameManager : MonoBehaviour
     public int pronuncationLevel = 0;
 
     public int arrangeLevel = 0;
+
+    public bool boolForBGMusic = true;
+
+    private void Start()
+    {
+        int tempBGMusic = PlayerPrefs.GetInt("backgroundMusicSetting");
+
+        if (tempBGMusic == 0)
+        {
+            Debug.Log("BG Music ON!: " + tempBGMusic.ToString());
+            backgroundMusic.Play();
+        }
+        else if (tempBGMusic == 1)
+        {
+            Debug.Log("BG Music OFF!: " + tempBGMusic.ToString());
+            backgroundMusic.Stop();
+        }
+
+        boolForBGMusic = true;
+    }
 
     public void SetPageActive(int page)
     {
@@ -42,6 +64,53 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        int tempBGMusic = PlayerPrefs.GetInt("backgroundMusicSetting");
+
+        if (pageNumber == 0 || pageNumber == 1)
+        {
+            if (tempBGMusic == 0)
+            {
+                if (!backgroundMusic.isPlaying)
+                {
+                    backgroundMusic.Play();
+                }
+            }
+            else if (tempBGMusic == 1)
+            {
+                if (backgroundMusic.isPlaying)
+                {
+                    backgroundMusic.Stop();
+                }
+            }
+        }
+        else if (pageNumber > 1)
+        {
+            if (backgroundMusic.isPlaying)
+            {
+                backgroundMusic.Stop();
+            }
+        }
+
+        //if (tempBGMusic == 0 && boolForBGMusic)
+        //{
+        //    if (pageNumber == 0 || pageNumber == 1)
+        //    {
+        //        backgroundMusic.Play();
+        //        boolForBGMusic = false;
+        //    }
+        //    else if (pageNumber != 0 || pageNumber != 1)
+        //    {
+        //        backgroundMusic.Stop();
+        //        boolForBGMusic = true;
+        //    }
+            
+        //}
+        //else if (tempBGMusic == 1)
+        //{
+        //    boolForBGMusic = true;
+        //    backgroundMusic.Stop();
+        //}
+
         if (pageNumber == 0)
         {
             openingPage.SetActive(true);

@@ -42,7 +42,7 @@ public class MainPageScript : MonoBehaviour
     int playerPostTestScore = 0;
     int playerPostTestDone = 0;
 
-    int pointsMultiplier = 15;
+    //int pointsMultiplier = 15;
 
     private void Awake()
     {

@@ -23,6 +23,8 @@ public class TestScript : MonoBehaviour
     public AudioSource secondAudio;
     public AudioSource thirdAudio;
 
+    public AudioSource buttonSoundEffect;
+
     public bool firstPosition = false;
     public bool secondPosition = false;
     public bool thirdPosition = false;
@@ -78,6 +80,7 @@ public class TestScript : MonoBehaviour
 
     public void ArrangeContinueBtn()
     {
+        buttonSoundEffect.Play();
         preTestScript.testNumber += 1;
 
         if (firstPosition && secondPosition && thirdPosition && fourthPosition && fifthPosition)

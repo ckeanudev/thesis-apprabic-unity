@@ -96,6 +96,7 @@ public class WritingUIScript : MonoBehaviour
     public void BackToChooseLevel()
     {
         gameManager.buttonSoundEffect.Play();
+        pressNextButton = true;
         sufficientPointsObject.SetActive(false);
         showWinDialog = false;
         if (writingCategoryType == "alphabets")

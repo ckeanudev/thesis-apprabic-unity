@@ -126,6 +126,7 @@ public class LvlBtn : MonoBehaviour
 
         if (playerExperiencePoints < tempLevelref * pointsMultiplier)
         {
+            gameManager.lockSoundEffect.Play();
             Debug.Log("Lock Level");
         }
         else

@@ -97,6 +97,7 @@ public class PronouneUIScript : MonoBehaviour
     public void BackToChooseLevel()
     {
         gameManager.buttonSoundEffect.Play();
+        pressNextButton = true;
         sufficientPointsObject.SetActive(false);
         showWinDialog = false;
         if (pronunciationCategoryType == "alphabets")

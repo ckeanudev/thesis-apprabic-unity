@@ -248,31 +248,35 @@ public class NewMainButton : MonoBehaviour
 
         if (buttonType == "posttest")
         {
-            //if (buttonType == "posttest" && playerExperiencePoints < requiredPointsForLevels.forPostTest * pointsMultiplier)
-            //{
-            //    Debug.Log("Lock");
-            //}
-            //else
-            //{
-            //    gameManager.pageNumber = 7;
-            //}
-            gameManager.buttonSoundEffect.Play();
-            gameManager.pageNumber = 7;
+            if (buttonType == "posttest" && playerExperiencePoints < requiredPointsForLevels.forPostTest * pointsMultiplier)
+            {
+                gameManager.lockSoundEffect.Play();
+                Debug.Log("Lock");
+            }
+            else
+            {
+                gameManager.buttonSoundEffect.Play();
+                gameManager.pageNumber = 7;
+            }
+            //gameManager.buttonSoundEffect.Play();
+            //gameManager.pageNumber = 7;
         }
 
         // For Write --------------------------------------------------
         if (buttonType == "write")
         {
-            //if (buttonType == "write" && playerPreTestDone == 0)
-            //{
-            //    Debug.Log("Lock");
-            //}
-            //else
-            //{
-            //    gameManager.mainPageNumber = 2;
-            //}
-            gameManager.buttonSoundEffect.Play();
-            gameManager.mainPageNumber = 2;
+            if (buttonType == "write" && playerPreTestDone == 0)
+            {
+                gameManager.lockSoundEffect.Play();
+                Debug.Log("Lock");
+            }
+            else
+            {
+                gameManager.buttonSoundEffect.Play();
+                gameManager.mainPageNumber = 2;
+            }
+            //gameManager.buttonSoundEffect.Play();
+            //gameManager.mainPageNumber = 2;
         }
 
         if (buttonType == "write letters")
@@ -283,31 +287,35 @@ public class NewMainButton : MonoBehaviour
 
         if (buttonType == "write numbers")
         {
-            //if (buttonType == "write numbers" && playerExperiencePoints < requiredPointsForLevels.forWN1 * pointsMultiplier)
-            //{
-            //    Debug.Log("Lock");
-            //}
-            //else
-            //{
-            //    gameManager.mainPageNumber = 5;
-            //}
-            gameManager.buttonSoundEffect.Play();
-            gameManager.mainPageNumber = 5;
+            if (buttonType == "write numbers" && playerExperiencePoints < requiredPointsForLevels.forWN1 * pointsMultiplier)
+            {
+                gameManager.lockSoundEffect.Play();
+                Debug.Log("Lock");
+            }
+            else
+            {
+                gameManager.buttonSoundEffect.Play();
+                gameManager.mainPageNumber = 5;
+            }
+            //gameManager.buttonSoundEffect.Play();
+            //gameManager.mainPageNumber = 5;
         }
 
         // For Pronounce --------------------------------------------------
         if (buttonType == "pronounce")
         {
-            //if (buttonType == "pronounce" && playerExperiencePoints < requiredPointsForLevels.forPL1 * pointsMultiplier)
-            //{
-            //    Debug.Log("Lock");
-            //}
-            //else
-            //{
-            //    gameManager.mainPageNumber = 3;
-            //}
-            gameManager.buttonSoundEffect.Play();
-            gameManager.mainPageNumber = 3;
+            if (buttonType == "pronounce" && playerExperiencePoints < requiredPointsForLevels.forPL1 * pointsMultiplier)
+            {
+                gameManager.lockSoundEffect.Play();
+                Debug.Log("Lock");
+            }
+            else
+            {
+                gameManager.buttonSoundEffect.Play();
+                gameManager.mainPageNumber = 3;
+            }
+            //gameManager.buttonSoundEffect.Play();
+            //gameManager.mainPageNumber = 3;
         }
 
         if (buttonType == "pronounce letters")
@@ -318,31 +326,35 @@ public class NewMainButton : MonoBehaviour
 
         if (buttonType == "pronounce numbers")
         {
-            //if (buttonType == "pronounce numbers" && playerExperiencePoints < requiredPointsForLevels.forPN1 * pointsMultiplier)
-            //{
-            //    Debug.Log("Lock");
-            //}
-            //else
-            //{
-            //    gameManager.mainPageNumber = 7;
-            //}
-            gameManager.buttonSoundEffect.Play();
-            gameManager.mainPageNumber = 7;
+            if (buttonType == "pronounce numbers" && playerExperiencePoints < requiredPointsForLevels.forPN1 * pointsMultiplier)
+            {
+                gameManager.lockSoundEffect.Play();
+                Debug.Log("Lock");
+            }
+            else
+            {
+                gameManager.buttonSoundEffect.Play();
+                gameManager.mainPageNumber = 7;
+            }
+            //gameManager.buttonSoundEffect.Play();
+            //gameManager.mainPageNumber = 7;
         }
 
         // For Arrange --------------------------------------------------
         if (buttonType == "arrange")
         {
-            //if (buttonType == "arrange" && playerExperiencePoints < requiredPointsForLevels.forARR1 * pointsMultiplier)
-            //{
-            //    Debug.Log("Lock");
-            //}
-            //else
-            //{
-            //    gameManager.mainPageNumber = 9;
-            //}
-            gameManager.buttonSoundEffect.Play();
-            gameManager.mainPageNumber = 9;
+            if (buttonType == "arrange" && playerExperiencePoints < requiredPointsForLevels.forARR1 * pointsMultiplier)
+            {
+                gameManager.lockSoundEffect.Play();
+                Debug.Log("Lock");
+            }
+            else
+            {
+                gameManager.buttonSoundEffect.Play();
+                gameManager.mainPageNumber = 9;
+            }
+            //gameManager.buttonSoundEffect.Play();
+            //gameManager.mainPageNumber = 9;
         }
 
 
