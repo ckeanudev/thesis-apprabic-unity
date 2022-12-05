@@ -20,6 +20,15 @@ public class MainPageScript : MonoBehaviour
     public GameObject arrangePage; //--9
 
     public GameObject backButton;
+
+    public GameObject showWriteTutsButton;
+    public GameObject showWriteTutsButton2;
+
+    public GameObject showPronounceTutsButton;
+    public GameObject showPronounceTutsButton2;
+
+    public GameObject showArrangeTutsButton;
+
     public TextMeshProUGUI topTitleText;
     public GameObject showUser;
     public GameObject showSetting;
@@ -66,6 +75,13 @@ public class MainPageScript : MonoBehaviour
         showUser.SetActive(false);
 
         backButton.SetActive(false);
+
+        showWriteTutsButton.SetActive(false);
+        showPronounceTutsButton.SetActive(false);
+        showArrangeTutsButton.SetActive(false);
+
+        showWriteTutsButton2.SetActive(false);
+        showPronounceTutsButton2.SetActive(false);
 
         if (playerPrefStats.playerPrefID == 1)
         {
@@ -204,6 +220,13 @@ public class MainPageScript : MonoBehaviour
 
             topTitleText.text = "";
             backButton.SetActive(false);
+
+            showWriteTutsButton.SetActive(false);
+            showPronounceTutsButton.SetActive(false);
+            showArrangeTutsButton.SetActive(false);
+
+            showWriteTutsButton2.SetActive(false);
+            showPronounceTutsButton2.SetActive(false);
         }
         else if (gameManager.mainPageNumber == 2)
         {
@@ -222,6 +245,13 @@ public class MainPageScript : MonoBehaviour
 
             topTitleText.text = "Write";
             backButton.SetActive(true);
+
+            showWriteTutsButton.SetActive(false);
+            showPronounceTutsButton.SetActive(false);
+            showArrangeTutsButton.SetActive(false);
+
+            showWriteTutsButton2.SetActive(false);
+            showPronounceTutsButton2.SetActive(false);
         }
         else if (gameManager.mainPageNumber == 3)
         {
@@ -240,6 +270,13 @@ public class MainPageScript : MonoBehaviour
 
             topTitleText.text = "Pronounce";
             backButton.SetActive(true);
+
+            showWriteTutsButton.SetActive(false);
+            showPronounceTutsButton.SetActive(false);
+            showArrangeTutsButton.SetActive(false);
+
+            showWriteTutsButton2.SetActive(false);
+            showPronounceTutsButton2.SetActive(false);
         }
         else if (gameManager.mainPageNumber == 4)
         {
@@ -256,6 +293,13 @@ public class MainPageScript : MonoBehaviour
 
             topTitleText.text = "Write: Letters";
             backButton.SetActive(true);
+
+            showWriteTutsButton.SetActive(true);
+            showPronounceTutsButton.SetActive(false);
+            showArrangeTutsButton.SetActive(false);
+
+            showWriteTutsButton2.SetActive(false);
+            showPronounceTutsButton2.SetActive(false);
         }
         else if (gameManager.mainPageNumber == 5)
         {
@@ -274,6 +318,13 @@ public class MainPageScript : MonoBehaviour
 
             topTitleText.text = "Write: Numbers";
             backButton.SetActive(true);
+
+            showWriteTutsButton.SetActive(false);
+            showPronounceTutsButton.SetActive(false);
+            showArrangeTutsButton.SetActive(false);
+
+            showWriteTutsButton2.SetActive(true);
+            showPronounceTutsButton2.SetActive(false);
         }
         else if (gameManager.mainPageNumber == 6)
         {
@@ -292,6 +343,13 @@ public class MainPageScript : MonoBehaviour
 
             topTitleText.text = "Pronounce: Letters";
             backButton.SetActive(true);
+
+            showWriteTutsButton.SetActive(false);
+            showPronounceTutsButton.SetActive(true);
+            showArrangeTutsButton.SetActive(false);
+
+            showWriteTutsButton2.SetActive(false);
+            showPronounceTutsButton2.SetActive(false);
         }
         else if (gameManager.mainPageNumber == 7)
         {
@@ -310,6 +368,13 @@ public class MainPageScript : MonoBehaviour
 
             topTitleText.text = "Pronounce: Numbers";
             backButton.SetActive(true);
+
+            showWriteTutsButton.SetActive(false);
+            showPronounceTutsButton.SetActive(false);
+            showArrangeTutsButton.SetActive(false);
+
+            showWriteTutsButton2.SetActive(false);
+            showPronounceTutsButton2.SetActive(true);
         }
         else if (gameManager.mainPageNumber == 8)
         {
@@ -328,6 +393,13 @@ public class MainPageScript : MonoBehaviour
 
             topTitleText.text = "Pre-Test & Post-Test";
             backButton.SetActive(true);
+
+            showWriteTutsButton.SetActive(false);
+            showPronounceTutsButton.SetActive(false);
+            showArrangeTutsButton.SetActive(false);
+
+            showWriteTutsButton2.SetActive(false);
+            showPronounceTutsButton2.SetActive(false);
         }
         else if (gameManager.mainPageNumber == 9)
         {
@@ -346,6 +418,13 @@ public class MainPageScript : MonoBehaviour
 
             topTitleText.text = "Arrange";
             backButton.SetActive(true);
+
+            showWriteTutsButton.SetActive(false);
+            showPronounceTutsButton.SetActive(false);
+            showArrangeTutsButton.SetActive(true);
+
+            showWriteTutsButton2.SetActive(false);
+            showPronounceTutsButton2.SetActive(false);
         }
         else if (gameManager.mainPageNumber == 10)
         {
@@ -364,6 +443,13 @@ public class MainPageScript : MonoBehaviour
 
             topTitleText.text = "Setting";
             backButton.SetActive(true);
+
+            showWriteTutsButton.SetActive(false);
+            showPronounceTutsButton.SetActive(false);
+            showArrangeTutsButton.SetActive(false);
+
+            showWriteTutsButton2.SetActive(false);
+            showPronounceTutsButton2.SetActive(false);
         }
     }
 

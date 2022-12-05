@@ -127,6 +127,17 @@ public class ForWelcomeScript : MonoBehaviour
         {
             welcomeObject.SetActive(true);
         }
+
+        if (typeWelcome == "write play" && playerPreTestDone == 1 && playerExperiencePoints == 0)
+        {
+            welcomeObject.SetActive(true);
+        }
+
+        if (typeWelcome == "pronounce play" && playerExperiencePoints >= requiredPointsForLevels.forPL1 * pointsMultiplier && playerExperiencePoints < requiredPointsForLevels.forPL2 * pointsMultiplier)
+        {
+            welcomeObject.SetActive(true);
+        }
+
     }
 
     public void CloseWelcomeObject ()
@@ -134,7 +145,6 @@ public class ForWelcomeScript : MonoBehaviour
         buttonSoundEffect.Play();
         welcomeObject.SetActive(false);
     }
-
 
     public void CloseWelcomeObject2()
     {
@@ -147,4 +157,23 @@ public class ForWelcomeScript : MonoBehaviour
         buttonSoundEffect.Play();
         welcomeObject3.SetActive(false);
     }
+
+    public void ShowVideoTuts ()
+    {
+        if (typeWelcome == "write play" || typeWelcome == "arrange")
+        {
+            welcomeObject2.SetActive(true);
+        }
+        else 
+        {
+            welcomeObject.SetActive(true);
+        }
+    }
+
+    public void NextTutsBtn()
+    {
+        welcomeObject.SetActive(false);
+        welcomeObject2.SetActive(true);
+    }
+
 }

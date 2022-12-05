@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
 
     public void SetPageActive(int page)
     {
+        buttonSoundEffect.Play();
         pageNumber = page;
     }
 

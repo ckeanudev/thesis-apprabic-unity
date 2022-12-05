@@ -14,8 +14,6 @@ public class TestResults : MonoBehaviour
 
     public TextMeshProUGUI testScoreText;
 
-    public AudioSource buttonSoundEffect;
-
     string scoreString = "";
 
     private void OnEnable()
