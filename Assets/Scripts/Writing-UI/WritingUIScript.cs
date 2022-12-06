@@ -64,6 +64,8 @@ public class WritingUIScript : MonoBehaviour
 
     public bool pressNextButton = true;
 
+    public bool showTutsFirst = true;
+
     private void OnEnable()
     {
         gameManager = gameM.GetComponent<GameManager>();
@@ -73,6 +75,8 @@ public class WritingUIScript : MonoBehaviour
         showWinDialog = false;
         winContainer.SetActive(false);
         sufficientPointsObject.SetActive(false);
+
+        showTutsFirst = true;
 
         levelText.text = "Level " + gameManager.writingLevel.ToString();
         LevelPageRender();
@@ -88,6 +92,7 @@ public class WritingUIScript : MonoBehaviour
         }
         else if (number == 0)
         {
+            showTutsFirst = false;
             videoObject.SetActive(false);
         }
     }
@@ -625,6 +630,7 @@ public class WritingUIScript : MonoBehaviour
     {
         gameManager.buttonSoundEffect.Play();
         gameManager.writingLevel += 1;
+        showTutsFirst = true;
         showWinDialog = false;
     }
 
@@ -693,6 +699,14 @@ public class WritingUIScript : MonoBehaviour
     private void Update()
     {
         levelText.text = "Level " + gameManager.writingLevel.ToString();
+        if (showTutsFirst)
+        {
+            videoObject.SetActive(true);
+        }
+        //else if (!showTutsFirst)
+        //{
+        //    videoObject.SetActive(false);
+        //}
 
         if (showWinDialog && delayOnce)
         {
@@ -823,7 +837,7 @@ public class WritingUIScript : MonoBehaviour
         {
             if (writingCategoryType == "alphabets")
             {
-                levelNameText.text = "Baa";
+                levelNameText.text = "Ba";
             }
             else if (writingCategoryType == "numbers")
             {
@@ -867,7 +881,7 @@ public class WritingUIScript : MonoBehaviour
         {
             if (writingCategoryType == "alphabets")
             {
-                levelNameText.text = "Taa";
+                levelNameText.text = "Ta";
             }
             else if (writingCategoryType == "numbers")
             {
@@ -911,7 +925,7 @@ public class WritingUIScript : MonoBehaviour
         {
             if (writingCategoryType == "alphabets")
             {
-                levelNameText.text = "Thaa";
+                levelNameText.text = "Tha";
             }
             else if (writingCategoryType == "numbers")
             {
@@ -955,7 +969,7 @@ public class WritingUIScript : MonoBehaviour
         {
             if (writingCategoryType == "alphabets")
             {
-                levelNameText.text = "Jeem";
+                levelNameText.text = "Jim";
             }
             else if (writingCategoryType == "numbers")
             {
@@ -999,7 +1013,7 @@ public class WritingUIScript : MonoBehaviour
         {
             if (writingCategoryType == "alphabets")
             {
-                levelNameText.text = "Ḥa";
+                levelNameText.text = "Ha";
             }
             else if (writingCategoryType == "numbers")
             {
@@ -1086,7 +1100,7 @@ public class WritingUIScript : MonoBehaviour
         {
             if (writingCategoryType == "alphabets")
             {
-                levelNameText.text = "Daal";
+                levelNameText.text = "Dal";
             }
             else if (writingCategoryType == "numbers")
             {
@@ -1129,7 +1143,7 @@ public class WritingUIScript : MonoBehaviour
         {
             if (writingCategoryType == "alphabets")
             {
-                levelNameText.text = "Dhaal";
+                levelNameText.text = "Dhal";
             }
             else if (writingCategoryType == "numbers")
             {
@@ -1172,7 +1186,7 @@ public class WritingUIScript : MonoBehaviour
         {
             if (writingCategoryType == "alphabets")
             {
-                levelNameText.text = "Raa";
+                levelNameText.text = "Ra";
             }
             else if (writingCategoryType == "numbers")
             {
@@ -1215,7 +1229,7 @@ public class WritingUIScript : MonoBehaviour
         {
             if (writingCategoryType == "alphabets")
             {
-                levelNameText.text = "Zaa";
+                levelNameText.text = "Zay";
             }
             else if (writingCategoryType == "numbers")
             {
@@ -1259,7 +1273,7 @@ public class WritingUIScript : MonoBehaviour
         {
             if (gameManager.writingLevel == 12)
             {
-                levelNameText.text = "Seen";
+                levelNameText.text = "Sin";
                 lvl1.SetActive(false);
                 lvl2.SetActive(false);
                 lvl3.SetActive(false);
@@ -1291,7 +1305,7 @@ public class WritingUIScript : MonoBehaviour
             }
             else if (gameManager.writingLevel == 13)
             {
-                levelNameText.text = "Sheen";
+                levelNameText.text = "Shin";
                 lvl1.SetActive(false);
                 lvl2.SetActive(false);
                 lvl3.SetActive(false);
@@ -1323,7 +1337,7 @@ public class WritingUIScript : MonoBehaviour
             }
             else if (gameManager.writingLevel == 14)
             {
-                levelNameText.text = "Ṣaad";
+                levelNameText.text = "Sad";
                 lvl1.SetActive(false);
                 lvl2.SetActive(false);
                 lvl3.SetActive(false);
@@ -1355,7 +1369,7 @@ public class WritingUIScript : MonoBehaviour
             }
             else if (gameManager.writingLevel == 15)
             {
-                levelNameText.text = "Ḍaad";
+                levelNameText.text = "Dad";
                 lvl1.SetActive(false);
                 lvl2.SetActive(false);
                 lvl3.SetActive(false);
@@ -1387,7 +1401,7 @@ public class WritingUIScript : MonoBehaviour
             }
             else if (gameManager.writingLevel == 16)
             {
-                levelNameText.text = "Ṭa";
+                levelNameText.text = "Ta'";
                 lvl1.SetActive(false);
                 lvl2.SetActive(false);
                 lvl3.SetActive(false);
@@ -1419,7 +1433,7 @@ public class WritingUIScript : MonoBehaviour
             }
             else if (gameManager.writingLevel == 17)
             {
-                levelNameText.text = "Ẓa";
+                levelNameText.text = "Da'";
                 lvl1.SetActive(false);
                 lvl2.SetActive(false);
                 lvl3.SetActive(false);
@@ -1515,7 +1529,7 @@ public class WritingUIScript : MonoBehaviour
             }
             else if (gameManager.writingLevel == 20)
             {
-                levelNameText.text = "Faa";
+                levelNameText.text = "Fa";
                 lvl1.SetActive(false);
                 lvl2.SetActive(false);
                 lvl3.SetActive(false);
@@ -1547,7 +1561,7 @@ public class WritingUIScript : MonoBehaviour
             }
             else if (gameManager.writingLevel == 21)
             {
-                levelNameText.text = "Qaaf";
+                levelNameText.text = "Qaf";
                 lvl1.SetActive(false);
                 lvl2.SetActive(false);
                 lvl3.SetActive(false);
@@ -1579,7 +1593,7 @@ public class WritingUIScript : MonoBehaviour
             }
             else if (gameManager.writingLevel == 22)
             {
-                levelNameText.text = "Kaaf";
+                levelNameText.text = "Kaf";
                 lvl1.SetActive(false);
                 lvl2.SetActive(false);
                 lvl3.SetActive(false);
@@ -1611,7 +1625,7 @@ public class WritingUIScript : MonoBehaviour
             }
             else if (gameManager.writingLevel == 23)
             {
-                levelNameText.text = "Laam";
+                levelNameText.text = "Lam";
                 lvl1.SetActive(false);
                 lvl2.SetActive(false);
                 lvl3.SetActive(false);
@@ -1643,7 +1657,7 @@ public class WritingUIScript : MonoBehaviour
             }
             else if (gameManager.writingLevel == 24)
             {
-                levelNameText.text = "Meem";
+                levelNameText.text = "Mim";
                 lvl1.SetActive(false);
                 lvl2.SetActive(false);
                 lvl3.SetActive(false);
@@ -1675,7 +1689,7 @@ public class WritingUIScript : MonoBehaviour
             }
             else if (gameManager.writingLevel == 25)
             {
-                levelNameText.text = "Noon";
+                levelNameText.text = "Nun";
                 lvl1.SetActive(false);
                 lvl2.SetActive(false);
                 lvl3.SetActive(false);
@@ -1707,7 +1721,7 @@ public class WritingUIScript : MonoBehaviour
             }
             else if (gameManager.writingLevel == 26)
             {
-                levelNameText.text = "Haa";
+                levelNameText.text = "Ha";
                 lvl1.SetActive(false);
                 lvl2.SetActive(false);
                 lvl3.SetActive(false);
@@ -1739,7 +1753,7 @@ public class WritingUIScript : MonoBehaviour
             }
             else if (gameManager.writingLevel == 27)
             {
-                levelNameText.text = "Waaw";
+                levelNameText.text = "Waw";
                 lvl1.SetActive(false);
                 lvl2.SetActive(false);
                 lvl3.SetActive(false);
@@ -1771,7 +1785,7 @@ public class WritingUIScript : MonoBehaviour
             }
             else if (gameManager.writingLevel == 28)
             {
-                levelNameText.text = "Yaa";
+                levelNameText.text = "Ya";
                 lvl1.SetActive(false);
                 lvl2.SetActive(false);
                 lvl3.SetActive(false);

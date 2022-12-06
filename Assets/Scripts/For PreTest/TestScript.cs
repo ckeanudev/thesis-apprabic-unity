@@ -39,10 +39,13 @@ public class TestScript : MonoBehaviour
 
     public GameObject nextButton;
 
-    private void Start()
+    private void Awake ()
     {
         preTestScript = preTestS.GetComponent<PreTestScript>();
+    }
 
+    private void Start()
+    {
         if (option1 != "" || option1 != null)
         {
             optionText1.text = option1;
@@ -88,9 +91,9 @@ public class TestScript : MonoBehaviour
             preTestScript.testScore += 1;
         }
 
-        Debug.Log("Test Number: " + preTestScript.testNumber.ToString());
-        Debug.Log("Test Score: " + preTestScript.testScore.ToString());
+        //Debug.Log("Test Number: " + preTestScript.testNumber.ToString());
+        //Debug.Log("Test Score: " + preTestScript.testScore.ToString());
 
-        Debug.Log("1st POS: " + firstPosition + ", 2nd POS: " + secondPosition + ", 3rd POS: " + thirdPosition + ", 4th POS: " + fourthPosition + ", 5th POS: " + fifthPosition);
+        //Debug.Log("1st POS: " + firstPosition + ", 2nd POS: " + secondPosition + ", 3rd POS: " + thirdPosition + ", 4th POS: " + fourthPosition + ", 5th POS: " + fifthPosition);
     }
 }

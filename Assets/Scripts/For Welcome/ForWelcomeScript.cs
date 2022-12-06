@@ -31,6 +31,8 @@ public class ForWelcomeScript : MonoBehaviour
     int playerPostTestScore = 0;
     int playerPostTestDone = 0;
 
+    int playerGraduate = 0;
+
     int pointsMultiplier = 15;
 
     private void Awake()
@@ -59,6 +61,8 @@ public class ForWelcomeScript : MonoBehaviour
 
             playerPostTestScore = PlayerPrefs.GetInt("playerPrefUserPostTestScore1");
             playerPostTestDone = PlayerPrefs.GetInt("playerPrefUserPostTestDone1");
+
+            playerGraduate = PlayerPrefs.GetInt("playerPrefUserGraduate1");
         }
         else if (playerPrefStats.playerPrefID == 2)
         {
@@ -69,6 +73,8 @@ public class ForWelcomeScript : MonoBehaviour
 
             playerPostTestScore = PlayerPrefs.GetInt("playerPrefUserPostTestScore2");
             playerPostTestDone = PlayerPrefs.GetInt("playerPrefUserPostTestDone2");
+
+            playerGraduate = PlayerPrefs.GetInt("playerPrefUserGraduate2");
         }
         else if (playerPrefStats.playerPrefID == 3)
         {
@@ -79,6 +85,8 @@ public class ForWelcomeScript : MonoBehaviour
 
             playerPostTestScore = PlayerPrefs.GetInt("playerPrefUserPostTestScore3");
             playerPostTestDone = PlayerPrefs.GetInt("playerPrefUserPostTestDone3");
+
+            playerGraduate = PlayerPrefs.GetInt("playerPrefUserGraduate3");
         }
 
         if (typeWelcome == "main menu")
@@ -93,7 +101,7 @@ public class ForWelcomeScript : MonoBehaviour
                 welcomeObject2.SetActive(true);
             }
 
-            if (playerPostTestDone == 1)
+            if (playerPostTestDone == 1 && playerGraduate == 0)
             {
                 welcomeObject3.SetActive(true);
             }
@@ -109,6 +117,11 @@ public class ForWelcomeScript : MonoBehaviour
             if (playerExperiencePoints >= requiredPointsForLevels.forPostTest * pointsMultiplier && playerPostTestDone == 0)
             {
                 welcomeObject2.SetActive(true);
+            }
+
+            if (playerPreTestDone == 1 && playerExperiencePoints == 0)
+            {
+                welcomeObject3.SetActive(true);
             }
         }
 
@@ -140,6 +153,27 @@ public class ForWelcomeScript : MonoBehaviour
 
     }
 
+    public void AfterPreTestButton()
+    {
+        buttonSoundEffect.Play();
+        welcomeObject3.SetActive(false);
+        gameManager.mainPageNumber = 1;
+    }
+
+    public void AfterPostTestButton ()
+    {
+        buttonSoundEffect.Play();
+        welcomeObject3.SetActive(false);
+        if (playerPrefStats.playerPrefID == 1)
+            PlayerPrefs.SetInt("playerPrefUserGraduate1", 1);
+
+        if (playerPrefStats.playerPrefID == 2)
+            PlayerPrefs.SetInt("playerPrefUserGraduate2", 1);
+
+        if (playerPrefStats.playerPrefID == 3)
+            PlayerPrefs.SetInt("playerPrefUserGraduate3", 1);
+    }
+
     public void CloseWelcomeObject ()
     {
         buttonSoundEffect.Play();
@@ -160,6 +194,7 @@ public class ForWelcomeScript : MonoBehaviour
 
     public void ShowVideoTuts ()
     {
+        buttonSoundEffect.Play();
         if (typeWelcome == "write play" || typeWelcome == "arrange")
         {
             welcomeObject2.SetActive(true);
@@ -172,6 +207,7 @@ public class ForWelcomeScript : MonoBehaviour
 
     public void NextTutsBtn()
     {
+        buttonSoundEffect.Play();
         welcomeObject.SetActive(false);
         welcomeObject2.SetActive(true);
     }

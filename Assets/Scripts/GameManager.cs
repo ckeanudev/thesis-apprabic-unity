@@ -33,8 +33,17 @@ public class GameManager : MonoBehaviour
 
     public bool boolForBGMusic = true;
 
+    PlayerStats playerPrefStats;
+    public GameObject playerPrefS;
+
+    private void Awake ()
+    {
+        playerPrefStats = playerPrefS.GetComponent<PlayerStats>();
+    }
+
     private void Start()
     {
+
         int tempBGMusic = PlayerPrefs.GetInt("backgroundMusicSetting");
 
         if (tempBGMusic == 0)
@@ -51,6 +60,32 @@ public class GameManager : MonoBehaviour
         boolForBGMusic = true;
     }
 
+    public void AfterPostTestBtn()
+    {
+        int tempPlayerGraduate = 0;
+
+        if (playerPrefStats.playerPrefID == 1)
+            tempPlayerGraduate = PlayerPrefs.GetInt("playerPrefUserGraduate1");
+        
+        if (playerPrefStats.playerPrefID == 2)
+            tempPlayerGraduate = PlayerPrefs.GetInt("playerPrefUserGraduate2");
+
+        if (playerPrefStats.playerPrefID == 3)
+            tempPlayerGraduate = PlayerPrefs.GetInt("playerPrefUserGraduate3");
+
+        buttonSoundEffect.Play();
+        if (tempPlayerGraduate == 0)
+        {
+            pageNumber = 1;
+            mainPageNumber = 1;
+        }
+        else if (tempPlayerGraduate == 1)
+        {
+            pageNumber = 1;
+        }
+        
+    }
+
     public void SetPageActive(int page)
     {
         buttonSoundEffect.Play();
@@ -59,6 +94,7 @@ public class GameManager : MonoBehaviour
 
     public void SetMainPageActive(int page)
     {
+        buttonSoundEffect.Play();
         mainPageNumber = page;
     }
 

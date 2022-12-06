@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CircleUser : MonoBehaviour
 {
+    public string circleType;
     public GameObject avatar1;
     public GameObject avatar2;
     public GameObject avatar3;
@@ -14,6 +15,8 @@ public class CircleUser : MonoBehaviour
     public GameObject avatar8;
     public GameObject avatar9;
     public GameObject avatar10;
+
+    public GameObject award;
 
     PlayerStats playerPrefStats;
     public GameObject playerPrefS;
@@ -39,7 +42,18 @@ public class CircleUser : MonoBehaviour
         if (playerPrefStats.playerPrefID == 1)
         {
             int firstPlayerAvatar = PlayerPrefs.GetInt("playerPrefUserAvatar1");
+            int firstGraduate = PlayerPrefs.GetInt("playerPrefUserGraduate1");
             //Debug.Log("Circle User: " + firstPlayerAvatar.ToString());
+
+            if (circleType == "circleUser")
+            {
+                if (firstGraduate == 1)
+                    award.SetActive(true);
+
+                if (firstGraduate == 0)
+                    award.SetActive(false);
+            }
+            
 
             if (firstPlayerAvatar == 1)
             {
@@ -85,7 +99,17 @@ public class CircleUser : MonoBehaviour
         else if (playerPrefStats.playerPrefID == 2)
         {
             int secondPlayerAvatar = PlayerPrefs.GetInt("playerPrefUserAvatar2");
+            int secondGraduate = PlayerPrefs.GetInt("playerPrefUserGraduate2");
             //Debug.Log("Circle User: " + secondPlayerAvatar.ToString());
+
+            if (circleType == "circleUser")
+            {
+                if (secondGraduate == 1)
+                    award.SetActive(true);
+
+                if (secondGraduate == 0)
+                    award.SetActive(false);
+            }
 
             if (secondPlayerAvatar == 1)
             {
@@ -131,7 +155,17 @@ public class CircleUser : MonoBehaviour
         else if (playerPrefStats.playerPrefID == 3)
         {
             int thirdPlayerAvatar = PlayerPrefs.GetInt("playerPrefUserAvatar3");
+            int thirdGraduate = PlayerPrefs.GetInt("playerPrefUserGraduate3");
             //Debug.Log("Circle User: " + thirdPlayerAvatar.ToString());
+
+            if (circleType == "circleUser")
+            {
+                if (thirdGraduate == 1)
+                    award.SetActive(true);
+
+                if (thirdGraduate == 0)
+                    award.SetActive(false);
+            }
 
             if (thirdPlayerAvatar == 1)
             {
@@ -176,4 +210,39 @@ public class CircleUser : MonoBehaviour
         }
     }
 
+    //private void Update ()
+    //{
+    //    if (playerPrefStats.playerPrefID == 1)
+    //    {
+    //        int firstGraduate = PlayerPrefs.GetInt("playerPrefUserGraduate1");
+
+    //        if (firstGraduate == 1)
+    //            award.SetActive(true);
+
+    //        else if (firstGraduate == 0)
+    //            award.SetActive(false);
+
+    //    }
+    //    else if (playerPrefStats.playerPrefID == 2)
+    //    {
+    //        int secondGraduate = PlayerPrefs.GetInt("playerPrefUserGraduate2");
+
+    //        if (secondGraduate == 1)
+    //            award.SetActive(true);
+
+    //        else if (secondGraduate == 0)
+    //            award.SetActive(false);
+    //    }
+    //    else if (playerPrefStats.playerPrefID == 3)
+    //    {
+    //        int thirdGraduate = PlayerPrefs.GetInt("playerPrefUserGraduate3");
+
+    //        if (thirdGraduate == 1)
+    //            award.SetActive(true);
+
+    //        else if (thirdGraduate == 0)
+    //            award.SetActive(false);
+    //    }
+
+    //}
 }

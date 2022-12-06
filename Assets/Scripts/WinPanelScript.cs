@@ -69,8 +69,11 @@ public class WinPanelScript : MonoBehaviour
         requiredPointsForLevels = requiredPointsS.GetComponent<RequiredPointsForLevels>();
         gameManager = gameM.GetComponent<GameManager>();
 
-        lockNextBtn.SetActive(false);
-        pointingNextBtn.SetActive(false);
+        if (lockNextBtn != null)
+            lockNextBtn.SetActive(false);
+
+        if(pointingNextBtn != null)
+            pointingNextBtn.SetActive(false);
 
         if (playerPrefStats.playerPrefID == 1)
         {
@@ -139,7 +142,7 @@ public class WinPanelScript : MonoBehaviour
             winDialog[2] = "Nice One!";
             winDialog[3] = "Nice Work!";
 
-            winText.text = "Try Again";
+            winText.text = "Try Again, My Friend";
         }
     }
 

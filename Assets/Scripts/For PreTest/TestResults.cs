@@ -16,9 +16,13 @@ public class TestResults : MonoBehaviour
 
     string scoreString = "";
 
+    PlayerStats playerPrefStats;
+    public GameObject playerPrefS;
+
     private void OnEnable()
     {
         preTestScript = preTestS.GetComponent<PreTestScript>();
+        playerPrefStats = playerPrefS.GetComponent<PlayerStats>();
 
         loadingPage.SetActive(true);
         testResultPage.SetActive(false);
@@ -30,6 +34,31 @@ public class TestResults : MonoBehaviour
         Debug.Log(preTestScript.testScore);
 
         string tempString = "";
+
+        if (playerPrefStats.playerPrefID == 1)
+        {
+            Debug.Log("Inside 1!");
+            if (preTestScript.testType == "pretest")
+                PlayerPrefs.SetInt("playerPrefUserPreTestScore1", preTestScript.testScore);
+            else if (preTestScript.testType == "posttest")
+                PlayerPrefs.SetInt("playerPrefUserPostTestScore1", preTestScript.testScore);
+        }
+        else if (playerPrefStats.playerPrefID == 2)
+        {
+            Debug.Log("Inside 2!");
+            if (preTestScript.testType == "pretest")
+                PlayerPrefs.SetInt("playerPrefUserPreTestScore2", preTestScript.testScore);
+            else if (preTestScript.testType == "posttest")
+                PlayerPrefs.SetInt("playerPrefUserPostTestScore2", preTestScript.testScore);
+        }
+        else if (playerPrefStats.playerPrefID == 3)
+        {
+            Debug.Log("Inside 3!");
+            if (preTestScript.testType == "pretest")
+                PlayerPrefs.SetInt("playerPrefUserPreTestScore3", preTestScript.testScore);
+            else if (preTestScript.testType == "posttest")
+                PlayerPrefs.SetInt("playerPrefUserPostTestScore3", preTestScript.testScore);
+        }
 
         if (preTestScript.testScore < 10)
         {

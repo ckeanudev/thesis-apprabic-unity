@@ -63,6 +63,8 @@ public class ShowUserScript : MonoBehaviour
     int playerPostTestScore;
     int playerPostTestDone = 0;
 
+    int playerGraduate = 0;
+
     int pointsMultiplier = 15;
 
     private void Awake()
@@ -109,6 +111,8 @@ public class ShowUserScript : MonoBehaviour
 
             playerPostTestScore = PlayerPrefs.GetInt("playerPrefUserPostTestScore1");
             playerPostTestDone = PlayerPrefs.GetInt("playerPrefUserPostTestDone1");
+
+            playerGraduate = PlayerPrefs.GetInt("playerPrefUserGraduate1");
         }
         else if (playerPrefStats.playerPrefID == 2)
         {
@@ -120,6 +124,8 @@ public class ShowUserScript : MonoBehaviour
 
             playerPostTestScore = PlayerPrefs.GetInt("playerPrefUserPostTestScore2");
             playerPostTestDone = PlayerPrefs.GetInt("playerPrefUserPostTestDone2");
+
+            playerGraduate = PlayerPrefs.GetInt("playerPrefUserGraduate2");
         }
         else if (playerPrefStats.playerPrefID == 3)
         {
@@ -131,6 +137,8 @@ public class ShowUserScript : MonoBehaviour
 
             playerPostTestScore = PlayerPrefs.GetInt("playerPrefUserPostTestScore3");
             playerPostTestDone = PlayerPrefs.GetInt("playerPrefUserPostTestDone3");
+
+            playerGraduate = PlayerPrefs.GetInt("playerPrefUserGraduate3");
         }
 
         // *** ------------------------------------ *** ------------------------------------
@@ -310,6 +318,8 @@ public class ShowUserScript : MonoBehaviour
 
             PlayerPrefs.SetInt("playerPrefUserPostTestScore1", 0);
             PlayerPrefs.SetInt("playerPrefUserPostTestDone1", 0);
+
+            PlayerPrefs.SetInt("playerPrefUserGraduate1", 0);
         }
         else if (playerPrefStats.playerPrefID == 2)
         {
@@ -322,6 +332,8 @@ public class ShowUserScript : MonoBehaviour
 
             PlayerPrefs.SetInt("playerPrefUserPostTestScore2", 0);
             PlayerPrefs.SetInt("playerPrefUserPostTestDone2", 0);
+
+            PlayerPrefs.SetInt("playerPrefUserGraduate2", 0);
         }
         else if (playerPrefStats.playerPrefID == 3)
         {
@@ -334,6 +346,8 @@ public class ShowUserScript : MonoBehaviour
 
             PlayerPrefs.SetInt("playerPrefUserPostTestScore3", 0);
             PlayerPrefs.SetInt("playerPrefUserPostTestDone3", 0);
+
+            PlayerPrefs.SetInt("playerPrefUserGraduate3",0);
         }
 
         playerPrefStats.playerPrefID = 0;
