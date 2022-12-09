@@ -17,7 +17,7 @@ public class SQLiteScript : MonoBehaviour
 
     public void CreateDB()
     {
-        Debug.Log("Getting inside!");
+        //Debug.Log("Getting inside!");
 
         using (var connection = new SqliteConnection(dbName))
         {
@@ -52,13 +52,13 @@ public class SQLiteScript : MonoBehaviour
             }
 
             connection.Close();
-            Debug.Log("Create User Success!");
+            //Debug.Log("Create User Success!");
         }
     }
 
     public void Try(string name)
     {
-        Debug.Log(name);
+        //Debug.Log(name);
     }
     
 }

@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
     PlayerStats playerPrefStats;
     public GameObject playerPrefS;
 
+    public bool stopBGMusicForTuts;
+
     private void Awake ()
     {
         playerPrefStats = playerPrefS.GetComponent<PlayerStats>();
@@ -107,9 +109,27 @@ public class GameManager : MonoBehaviour
         {
             if (tempBGMusic == 0)
             {
+                if (!stopBGMusicForTuts)
+                {
+                    if (!backgroundMusic.isPlaying)
+                        backgroundMusic.Play();
+                }
+                else
+                {
+                    if (backgroundMusic.isPlaying)
+                        backgroundMusic.Stop();
+                }
+
                 if (!backgroundMusic.isPlaying)
                 {
-                    backgroundMusic.Play();
+                    if (stopBGMusicForTuts)
+                    {
+                        backgroundMusic.Play();
+                    }
+                    else
+                    {
+                        backgroundMusic.Stop();
+                    }
                 }
             }
             else if (tempBGMusic == 1)

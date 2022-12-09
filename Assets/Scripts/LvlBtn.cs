@@ -10,6 +10,8 @@ public class LvlBtn : MonoBehaviour
     //public float freq;
     //Vector3 initPos;
 
+    public bool blinkPurpose;
+
     public string levelTitle;
     public int levelNumber;
     public string mode;
@@ -80,7 +82,7 @@ public class LvlBtn : MonoBehaviour
         // *** For Floating Animation -------------------------------------------------------
         if (playerExperiencePoints >= tempLevelref * pointsMultiplier && playerExperiencePoints < (tempLevelref + 1) * pointsMultiplier)
         {
-            Debug.Log("Floating Level: " + levelTitle);
+            //Debug.Log("Floating Level: " + levelTitle);
 
             //imgComp.color = Color.Lerp(startColor, endColor, Mathf.PingPong(Time.time * speed, 1));
             //transform.position = new Vector3(initPos.x, Mathf.Sin(Time.time * freq) * amp + initPos.y, 0);
@@ -113,6 +115,12 @@ public class LvlBtn : MonoBehaviour
             imgComp.color = Color.Lerp(startColor, endColor, Mathf.PingPong(Time.time * speed, 1));
             //transform.position = new Vector3(initPos.x, Mathf.Sin(Time.time * freq) * amp + initPos.y, 0);
         }
+
+        if (blinkPurpose)
+        {
+            imgComp.color = Color.Lerp(startColor, endColor, Mathf.PingPong(Time.time * speed, 1));
+            checkDone.SetActive(false);
+        }
     }
 
     public void LevelButtonContinue()
@@ -127,7 +135,7 @@ public class LvlBtn : MonoBehaviour
         if (playerExperiencePoints < tempLevelref * pointsMultiplier)
         {
             gameManager.lockSoundEffect.Play();
-            Debug.Log("Lock Level");
+            //Debug.Log("Lock Level");
         }
         else
         {

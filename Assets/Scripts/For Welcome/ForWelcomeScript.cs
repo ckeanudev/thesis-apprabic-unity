@@ -44,7 +44,8 @@ public class ForWelcomeScript : MonoBehaviour
 
     private void OnEnable()
     {
-        welcomeObject.SetActive(false);
+        if (welcomeObject != null)
+            welcomeObject.SetActive(false);
 
         if (welcomeObject2 != null)
             welcomeObject2.SetActive(false);
@@ -128,27 +129,35 @@ public class ForWelcomeScript : MonoBehaviour
 
         if (typeWelcome == "write" && playerPreTestDone == 1 && playerExperiencePoints == 0)
         {
-            welcomeObject.SetActive(true);
+            if (welcomeObject != null) 
+                welcomeObject.SetActive(true);
         }
 
         if (typeWelcome == "pronounce" && playerExperiencePoints >= requiredPointsForLevels.forPL1 * pointsMultiplier && playerExperiencePoints < requiredPointsForLevels.forPL2 * pointsMultiplier)
         {
-            welcomeObject.SetActive(true);
+            if (welcomeObject != null) 
+                welcomeObject.SetActive(true);
         }
 
         if (typeWelcome == "arrange" && playerExperiencePoints >= requiredPointsForLevels.forARR1 * pointsMultiplier && playerExperiencePoints < requiredPointsForLevels.forARR2 * pointsMultiplier)
         {
-            welcomeObject.SetActive(true);
+            gameManager.stopBGMusicForTuts = true;
+            if (welcomeObject != null) 
+                welcomeObject.SetActive(true);
         }
 
         if (typeWelcome == "write play" && playerPreTestDone == 1 && playerExperiencePoints == 0)
         {
-            welcomeObject.SetActive(true);
+            gameManager.stopBGMusicForTuts = true;
+            if (welcomeObject != null)
+                welcomeObject.SetActive(true);
         }
 
         if (typeWelcome == "pronounce play" && playerExperiencePoints >= requiredPointsForLevels.forPL1 * pointsMultiplier && playerExperiencePoints < requiredPointsForLevels.forPL2 * pointsMultiplier)
         {
-            welcomeObject.SetActive(true);
+            gameManager.stopBGMusicForTuts = true;
+            if (welcomeObject != null) 
+                welcomeObject.SetActive(true);
         }
 
     }
@@ -195,6 +204,7 @@ public class ForWelcomeScript : MonoBehaviour
     public void ShowVideoTuts ()
     {
         buttonSoundEffect.Play();
+        gameManager.stopBGMusicForTuts = true;
         if (typeWelcome == "write play" || typeWelcome == "arrange")
         {
             welcomeObject2.SetActive(true);
@@ -204,6 +214,28 @@ public class ForWelcomeScript : MonoBehaviour
             welcomeObject.SetActive(true);
         }
     }
+
+    public void GoBackToLvlBtn ()
+    {
+        welcomeObject.SetActive(true);
+        welcomeObject2.SetActive(false);
+    }
+
+    public void HideVideoTuts()
+    {
+        buttonSoundEffect.Play();
+        gameManager.stopBGMusicForTuts = false;
+        if (typeWelcome == "write play" || typeWelcome == "arrange")
+        {
+            welcomeObject2.SetActive(false);
+        }
+        else
+        {
+            welcomeObject.SetActive(false);
+        }
+    }
+
+
 
     public void NextTutsBtn()
     {

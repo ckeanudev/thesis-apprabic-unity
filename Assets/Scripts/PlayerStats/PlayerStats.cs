@@ -10,9 +10,6 @@ public class PlayerStats : MonoBehaviour
     public int preTestScore;
     public int postTestScore;
 
-    void Start()
-    {
-        
-    }
+   
 
 }

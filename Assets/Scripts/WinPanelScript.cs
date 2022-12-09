@@ -39,6 +39,16 @@ public class WinPanelScript : MonoBehaviour
     public GameObject lockNextBtn;
     public GameObject pointingNextBtn;
 
+    public AudioSource winAudio0;
+    public AudioSource winAudio1;
+    public AudioSource winAudio2;
+    public AudioSource winAudio3;
+
+    public AudioSource unwinAudio0;
+    public AudioSource unwinAudio1;
+    public AudioSource unwinAudio2;
+    public AudioSource unwinAudio3;
+
     string[] winDialog = new string[4];
 
     int playerExperiencePoints;
@@ -108,10 +118,27 @@ public class WinPanelScript : MonoBehaviour
 
             winDialog[0] = "Great Job!";
             winDialog[1] = "Well Done!";
-            winDialog[2] = "Nice One!";
-            winDialog[3] = "Nice Work!";
+            winDialog[2] = "Nicely Done!";
+            winDialog[3] = "Way to Go!";
 
             winText.text = winDialog[num];
+
+            //if (num == 0)
+            //{
+            //    winAudio0.Play();
+            //}
+            //else if (num == 1)
+            //{
+            //    winAudio1.Play();
+            //}
+            //else if (num == 2)
+            //{
+            //    winAudio2.Play();
+            //}
+            //else if (num == 3)
+            //{
+            //    winAudio3.Play();
+            //}
 
             if (typeMode == "writing")
             {
@@ -132,17 +159,33 @@ public class WinPanelScript : MonoBehaviour
                 ForArrange();
             }
 
-
         }
         else if (winType == "unwin")
         {
 
-            winDialog[0] = "Try Again";
-            winDialog[1] = "Almost";
-            winDialog[2] = "Nice One!";
-            winDialog[3] = "Nice Work!";
+            winDialog[0] = "Try Again, My Friend";
+            winDialog[1] = "Don’t Give Up!";
+            winDialog[2] = "It’s Okay, Try Again";
+            winDialog[3] = "It’s Fine, Try Again";
 
-            winText.text = "Try Again, My Friend";
+            winText.text = winDialog[num];
+
+            //if (num == 0)
+            //{
+            //    unwinAudio0.Play();
+            //}
+            //else if (num == 1)
+            //{
+            //    unwinAudio1.Play();
+            //}
+            //else if (num == 2)
+            //{
+            //    unwinAudio2.Play();
+            //}
+            //else if (num == 3)
+            //{
+            //    unwinAudio3.Play();
+            //}
         }
     }
 

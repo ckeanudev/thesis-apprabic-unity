@@ -151,7 +151,7 @@ public class Pronounce : MonoBehaviour
         else if (isTimerStop && !isTimerStart)
         {
             currentTimeStop = currentTime;
-            Debug.Log(currentTimeStop.ToString());
+            //Debug.Log(currentTimeStop.ToString());
             isTimerStop = false;
             isTimerStart = false;
             if (currentTimeStop <= 8)

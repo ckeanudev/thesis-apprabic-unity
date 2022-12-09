@@ -164,7 +164,15 @@ public class ShowUserScript : MonoBehaviour
         }
 
         playerNameText.text = playerName;
-        expPointsText.text = playerExpPoints.ToString() + " Points Earned";
+
+        if (playerGraduate == 1 )
+        {
+            expPointsText.text = "Completed";
+        }
+        else
+        {
+            expPointsText.text = playerExpPoints.ToString() + " Points Earned";
+        }
 
         // --- For Pre Test ------------------------------------
         if (playerPreTestDone == 1)
