@@ -6447,6 +6447,7 @@ MonoBehaviour:
   choiceContainer1: {fileID: 5515258318872788775}
   choiceContainer2: {fileID: 5515258318763879864}
   choiceContainer3: {fileID: 5515258319179167140}
+  buttonSoundEffect: {fileID: 0}
   averageCountTime: 0
 --- !u!1 &5515258319343254690
 GameObject:

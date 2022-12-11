@@ -9,7 +9,7 @@ public class LvlBtnTutsScript : MonoBehaviour
     
     void OnEnable()
     {
-        //hand.SetActive(false);
+        hand.SetActive(false);
         //hand.SetActive(true);
         StartCoroutine(Show1stHand());
         StartCoroutine(Show2ndHand());

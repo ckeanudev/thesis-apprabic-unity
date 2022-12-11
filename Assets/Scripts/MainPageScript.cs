@@ -51,6 +51,8 @@ public class MainPageScript : MonoBehaviour
     int playerPostTestScore = 0;
     int playerPostTestDone = 0;
 
+    public GameObject showProfileAnim;
+
     //int pointsMultiplier = 15;
 
     private void Awake()
@@ -203,6 +205,16 @@ public class MainPageScript : MonoBehaviour
 
     public void MainPageRender()
     {
+        if (gameManager.mainPageNumber == 1)
+        {
+            showProfileAnim.SetActive(true);
+        }
+        else
+        {
+            showProfileAnim.SetActive(false);
+        }
+
+
         if (gameManager.mainPageNumber == 1)
         {
             mainMenu.SetActive(true);

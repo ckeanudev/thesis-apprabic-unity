@@ -123,22 +123,22 @@ public class WinPanelScript : MonoBehaviour
 
             winText.text = winDialog[num];
 
-            //if (num == 0)
-            //{
-            //    winAudio0.Play();
-            //}
-            //else if (num == 1)
-            //{
-            //    winAudio1.Play();
-            //}
-            //else if (num == 2)
-            //{
-            //    winAudio2.Play();
-            //}
-            //else if (num == 3)
-            //{
-            //    winAudio3.Play();
-            //}
+            if (num == 0)
+            {
+                winAudio0.Play();
+            }
+            else if (num == 1)
+            {
+                winAudio1.Play();
+            }
+            else if (num == 2)
+            {
+                winAudio2.Play();
+            }
+            else if (num == 3)
+            {
+                winAudio3.Play();
+            }
 
             if (typeMode == "writing")
             {
@@ -170,22 +170,22 @@ public class WinPanelScript : MonoBehaviour
 
             winText.text = winDialog[num];
 
-            //if (num == 0)
-            //{
-            //    unwinAudio0.Play();
-            //}
-            //else if (num == 1)
-            //{
-            //    unwinAudio1.Play();
-            //}
-            //else if (num == 2)
-            //{
-            //    unwinAudio2.Play();
-            //}
-            //else if (num == 3)
-            //{
-            //    unwinAudio3.Play();
-            //}
+            if (num == 0)
+            {
+                unwinAudio0.Play();
+            }
+            else if (num == 1)
+            {
+                unwinAudio1.Play();
+            }
+            else if (num == 2)
+            {
+                unwinAudio2.Play();
+            }
+            else if (num == 3)
+            {
+                unwinAudio3.Play();
+            }
         }
     }
 

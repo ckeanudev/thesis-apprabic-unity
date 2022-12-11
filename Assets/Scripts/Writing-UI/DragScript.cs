@@ -73,7 +73,9 @@ public class DragScript : MonoBehaviour, IPointerDownHandler, IBeginDragHandler,
     public void OnPointerDown(PointerEventData eventData)
     {
         //Debug.Log("OnPointerDOwn " + orderDrag.ToString());
-        indexCount = indexCount + 1;
+        if (indexCount <= 1)
+            indexCount = indexCount + 1;
+
         //Debug.Log("Check1");
         traceContent.timerStartFunction();
     }

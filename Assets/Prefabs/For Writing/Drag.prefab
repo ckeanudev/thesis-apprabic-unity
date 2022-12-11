@@ -231,7 +231,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 60
+  m_Radius: 48
 --- !u!50 &5687585650250380974
 Rigidbody2D:
   serializedVersion: 4
@@ -281,4 +281,5 @@ MonoBehaviour:
   orderDrag: 1
   orderDragFinal: 3
   indexCount: 0
+  startPosition: {x: 0, y: 0}
   traceC: {fileID: 0}
