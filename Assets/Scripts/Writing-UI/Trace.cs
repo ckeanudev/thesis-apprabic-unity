@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Trace : MonoBehaviour
 {
+    // *** ---- This script is for the writing module where the user will follow the path of the letters or numbers by dragging the circle ---- *** //
+
     public int tracingLastPart;
 
     public GameObject untraceIMG1;
@@ -34,6 +36,8 @@ public class Trace : MonoBehaviour
 
     void OnEnable()
     {
+        // *** ---- the OnEnable function will be call when the page loads and it will get the components and objects with a scripts ---- *** //
+
         writingUIScript = writingUIS.GetComponent<WritingUIScript>();
         currentTime = 0;
         tracingPart1.SetActive(true);
@@ -85,6 +89,8 @@ public class Trace : MonoBehaviour
 
     public void timerStartFunction()
     {
+        // *** ---- the timerStartFunction function will be call when the user start to play and it will start the timer ---- *** //
+
         //Debug.Log("Count Start!");
         //Debug.Log(currentTime.ToString());
         isTimerStart = true;
@@ -93,6 +99,8 @@ public class Trace : MonoBehaviour
 
     public void timerStopFunction()
     {
+        // *** ---- the timerStopFunction function will be call when the user finished and it will stop the timer ---- *** //
+
         //Debug.Log("Count Stop!");
         isTimerStart = false;
         isTimerStop = true;
@@ -100,6 +108,8 @@ public class Trace : MonoBehaviour
 
     void Update()
     {
+        // *** ---- the Update function will be call every second when the page render and it will check the timer and it will display the score of the user ---- *** //
+
         if (isTimerStart && !isTimerStop)
         {
             currentTime = currentTime += Time.deltaTime;
@@ -130,6 +140,8 @@ public class Trace : MonoBehaviour
 
     public void TracingCheck(int tracingPart)
     {
+        // *** ---- the TracingCheck function will be call when the user is doing the writing module and it will check if the user is dragging the object to the correct path because the path has checkpoints to check the progress of the user ---- *** //
+
         if (tracingPart == 1)
         {
             untraceIMG1.SetActive(false);

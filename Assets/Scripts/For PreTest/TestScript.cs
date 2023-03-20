@@ -41,11 +41,15 @@ public class TestScript : MonoBehaviour
 
     private void Awake ()
     {
+        // *** ---- the Awake function will be call when the current page awake and it get the object with a pretest script  ---- *** //
+
         preTestScript = preTestS.GetComponent<PreTestScript>();
     }
 
     private void Start()
     {
+        // *** ---- the Start function will be call when the current page start ---- *** //
+
         if (option1 != "" || option1 != null)
         {
             optionText1.text = option1;
@@ -67,6 +71,8 @@ public class TestScript : MonoBehaviour
 
     public void PlayAudio(int audio)
     {
+        // *** ---- the PlayAudio function will be call when the user click the 3 buttons to listen ---- *** //
+
         if (audio == 1)
         {
             firstAudio.Play();
@@ -83,6 +89,8 @@ public class TestScript : MonoBehaviour
 
     public void ArrangeContinueBtn()
     {
+        // *** ---- the ArrangeContinueBtn function will be call when the user continue to arrange ---- *** //
+
         buttonSoundEffect.Play();
         preTestScript.testNumber += 1;
 

@@ -14,12 +14,16 @@ public class StartStop : MonoBehaviour
 
     void OnEnable ()
     {
+        // *** ---- the OnEnable function will be call when the page load and it will get the components with a scripts ---- *** //
+
         player = GetComponent<VideoPlayer>();
         button.image.sprite = stopPrite;
     }
 
     void Update()
     {
+        // *** ---- the Update function will be call when every second to check if the user is currently playing ---- *** //
+
         if (player.isPlaying == false)
         {
             button.image.sprite = startPrite;
@@ -33,6 +37,8 @@ public class StartStop : MonoBehaviour
 
     public void ChangeStartStop ()
     {
+        // *** ---- the ChangeStartStop function will be call user stop playing ---- *** //
+
         if (player.isPlaying == false)
         {
             player.Play();

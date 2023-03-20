@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    // *** ---- The variables below are for the stats of the current user ---- *** //
+
     public int playerPrefID;
     public int experiencePoints;
     public int currentLevel;

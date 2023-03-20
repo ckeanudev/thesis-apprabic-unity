@@ -20,7 +20,9 @@ public class ItemSlot : MonoBehaviour, IDropHandler
 
     private void OnEnable()
     {
-        if(isTest)
+        // *** ---- the OnEnable function will be call when the current page load and it will check if the current page is for test or not ---- *** //
+
+        if (isTest)
         {
             arrangeTest = arrangeT.GetComponent<TestScript>();
         }
@@ -44,16 +46,12 @@ public class ItemSlot : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        //Debug.Log(eventData.pointerDrag);
+        // *** ---- This OnDrop function will be call everytime the user drop the following letters or numbers on the empty slot and it will check if the letter or number was dropped is the correct arrangement by using the if else statement below ---- *** //
 
-        //Debug.Log("OnDrop");
         if (eventData.pointerDrag != null)
         {
-            //Debug.Log("DROP!");
             dropSoundEffect.Play();
             eventData.pointerDrag.GetComponent<RectTransform>().transform.position = new Vector2(dropPosition.x, dropPosition.y);
-
-            //Debug.Log(eventData.pointerDrag.GetComponent<DragArrange>().orderDrag);
 
             if(arrangePosition == 1)
             {

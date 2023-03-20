@@ -6,6 +6,8 @@ using TMPro;
 
 public class WritingUIScript : MonoBehaviour
 {
+    // *** ---- This script controls the UI or page for the Writing Module ---- *** //
+
     public string writingCategoryType;
     public TextMeshProUGUI levelNameText;
     public GameObject topContent;
@@ -68,6 +70,8 @@ public class WritingUIScript : MonoBehaviour
 
     private void OnEnable()
     {
+        // *** ---- the OnEnable function will be call when the page loads and it will get the components with a scripts ---- *** //
+
         gameManager = gameM.GetComponent<GameManager>();
         playerPrefStats = playerPrefS.GetComponent<PlayerStats>();
         requiredPointsForLevels = requiredPointsS.GetComponent<RequiredPointsForLevels>();
@@ -85,6 +89,8 @@ public class WritingUIScript : MonoBehaviour
     // For showing the video per each levels
     public void ShowVideo(int number)
     {
+        // *** ---- the ShowVideo function will be call when showing the video per levels ---- *** //
+
         gameManager.buttonSoundEffect.Play();
         if (number == 1)
         {
@@ -100,6 +106,8 @@ public class WritingUIScript : MonoBehaviour
     // -------------------------------- For Win Panel Button
     public void BackToChooseLevel()
     {
+        // *** ---- the BackToChooseLevel function will be call when the user chose to go back to choose a different level ---- *** //
+
         gameManager.buttonSoundEffect.Play();
         pressNextButton = true;
         sufficientPointsObject.SetActive(false);
@@ -118,6 +126,8 @@ public class WritingUIScript : MonoBehaviour
 
     public void NextLevelBtn()
     {
+        // *** ---- the NextLevelBtn function will be call when the user chose to go proceed toa next level and will be check if the user will proceed to a letter or number level by using the if else statement below ---- *** //
+
         if (pressNextButton)
         {
             int playerExperiencePoints = 0;
@@ -628,6 +638,8 @@ public class WritingUIScript : MonoBehaviour
 
     public void AddWritingLevel ()
     {
+        // *** ---- the AddWritingLevel function will be call when the user finished the current level and will be score if it is the current unlocked level ---- *** //
+
         gameManager.buttonSoundEffect.Play();
         gameManager.writingLevel += 1;
         showTutsFirst = true;
@@ -636,6 +648,8 @@ public class WritingUIScript : MonoBehaviour
 
     public void ShowSufficientObject(int num)
     {
+        // *** ---- the ShowSufficientObject function will be call when the user click the "Next" button but didn't earn enough points to unlock or proceed to the next level ---- *** //
+
         sufficientPointsText.text = "You need " + num.ToString() + " more points to proceed. Retry to earn more points";
         sufficientPointsObject.SetActive(true);
         pressNextButton = false;
@@ -644,6 +658,8 @@ public class WritingUIScript : MonoBehaviour
 
     public IEnumerator HideSufficientAgain()
     {
+        // *** ---- the HideSufficientAgain function will be call when the ShowSufficientObject function will be called and it will hde the object after 10 seconds ---- *** //
+
         yield return new WaitForSeconds(10f);
         sufficientPointsObject.SetActive(false);
         pressNextButton = true;
@@ -651,6 +667,8 @@ public class WritingUIScript : MonoBehaviour
 
     public void CloseSufficientObject()
     {
+        // *** ---- the CloseSufficientObject function will be call when the user close the object that the ShowSufficientObject function display ---- *** //
+
         gameManager.buttonSoundEffect.Play();
         sufficientPointsObject.SetActive(false);
         pressNextButton = true;
@@ -658,6 +676,8 @@ public class WritingUIScript : MonoBehaviour
 
     public void RetryBtn()
     {
+        // *** ---- the RetryBtn function will be call when the user choose to retry the current level ---- *** //
+
         gameManager.buttonSoundEffect.Play();
         sufficientPointsObject.SetActive(false);
         pressNextButton = true;
@@ -698,6 +718,8 @@ public class WritingUIScript : MonoBehaviour
 
     private void Update()
     {
+        // *** ---- the Update function will be call every second if the current page display ---- *** //
+
         levelText.text = "Level " + gameManager.writingLevel.ToString();
         if (showTutsFirst)
         {
@@ -733,6 +755,8 @@ public class WritingUIScript : MonoBehaviour
 
     public void BackFromWritingA()
     {
+        // *** ---- the BackFromWritingA function will be call when the user choose to go back to the Writing Letter Page ---- *** //
+
         gameManager.buttonSoundEffect.Play();
         gameManager.mainPageNumber = 4;
         gameManager.pageNumber = 1;
@@ -771,6 +795,8 @@ public class WritingUIScript : MonoBehaviour
 
     public void BackFromWritingN()
     {
+        // *** ---- the BackFromWritingN function will be call when the user choose to go back to the Writing Number Page ---- *** //
+
         gameManager.buttonSoundEffect.Play();
         gameManager.mainPageNumber = 5;
         gameManager.pageNumber = 1;
@@ -790,6 +816,8 @@ public class WritingUIScript : MonoBehaviour
 
     public void LevelPageRender()
     {
+        // *** ---- the LevelPageRender function will be call when the user choose a level and it will render the chosen level ---- *** //
+
         if (gameManager.writingLevel == 1)
         {
             if (writingCategoryType == "alphabets")

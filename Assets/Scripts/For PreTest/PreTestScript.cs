@@ -52,12 +52,16 @@ public class PreTestScript : MonoBehaviour
 
     private void Awake ()
     {
+        // *** ---- the Awake function will be call when the page wakes and it will get the components with a scripts ---- *** //
+
         playerPrefStats = playerPrefS.GetComponent<PlayerStats>();
         gameManager = gameM.GetComponent<GameManager>();
     }
 
     private void OnEnable ()
     {
+        // *** ---- the OnEnable function will be call when the page loads and it will check if the users has already did the test and if not it will display the tests ---- *** //
+
         playerPrefStats = playerPrefS.GetComponent<PlayerStats>();
         gameManager = gameM.GetComponent<GameManager>();
 
@@ -145,6 +149,8 @@ public class PreTestScript : MonoBehaviour
 
     public void CloseTutorial1 ()
     {
+        // *** ---- the CloseTutorial1 function will be call when the user close the tutorial video ---- *** //
+
         gameManager.buttonSoundEffect.Play();
         showAllTutorial = false;
         showTutorial1.SetActive(false);
@@ -152,6 +158,8 @@ public class PreTestScript : MonoBehaviour
 
     public void CloseTutorial2()
     {
+        // *** ---- the CloseTutorial2 function will be call when the user close the tutorial video ---- *** //
+
         gameManager.buttonSoundEffect.Play();
         showAllTutorial = false;
         showTutorial2.SetActive(false);
@@ -159,6 +167,8 @@ public class PreTestScript : MonoBehaviour
 
     public void CloseTutorial3()
     {
+        // *** ---- the CloseTutorial3 function will be call when the user close the tutorial video ---- *** //
+
         gameManager.buttonSoundEffect.Play();
         showAllTutorial = false;
         showTutorial3.SetActive(false);
@@ -166,6 +176,8 @@ public class PreTestScript : MonoBehaviour
 
     public void NextTest(int score)
     {
+        // *** ---- the NextTest function will be call when the user proceed to the next test and it will score if the user gets the correct answer ---- *** //
+
         gameManager.buttonSoundEffect.Play();
 
         testNumber += 1;
@@ -201,6 +213,8 @@ public class PreTestScript : MonoBehaviour
 
     private void Update()
     {
+        // *** ---- the Update function will be call every second to update the test everytime the user proceeds to next test ---- *** //
+
         if (testNumber < 16)
         {
             testOrderText.text = testNumber.ToString();

@@ -37,6 +37,8 @@ public class ForWelcomeScript : MonoBehaviour
 
     private void Awake()
     {
+        // *** ---- the Awake function will be call when the page wakes and it will get the components with a scripts ---- *** //
+
         playerPrefStats = playerPrefS.GetComponent<PlayerStats>();
         gameManager = gameM.GetComponent<GameManager>();
         requiredPointsForLevels = requiredPointsS.GetComponent<RequiredPointsForLevels>();
@@ -44,6 +46,8 @@ public class ForWelcomeScript : MonoBehaviour
 
     private void OnEnable()
     {
+        // *** ---- the OnEnable function will be call when the page loads and it will check if the user is new or not and it will display an object to welcome the user to the newest level or page ---- *** //
+
         if (welcomeObject != null)
             welcomeObject.SetActive(false);
 
@@ -164,6 +168,8 @@ public class ForWelcomeScript : MonoBehaviour
 
     public void AfterPreTestButton()
     {
+        // *** ---- the AfterPreTestButton function will be call when the user just finished the pretest ---- *** //
+
         buttonSoundEffect.Play();
         welcomeObject3.SetActive(false);
         gameManager.mainPageNumber = 1;
@@ -171,6 +177,8 @@ public class ForWelcomeScript : MonoBehaviour
 
     public void AfterPostTestButton ()
     {
+        // *** ---- the AfterPostTestButton function will be call when the user just finished the posttest ---- *** //
+
         buttonSoundEffect.Play();
         welcomeObject3.SetActive(false);
         if (playerPrefStats.playerPrefID == 1)
@@ -185,24 +193,32 @@ public class ForWelcomeScript : MonoBehaviour
 
     public void CloseWelcomeObject ()
     {
+        // *** ---- the CloseWelcomeObject function will be call when the user close the welcome object ---- *** //
+
         buttonSoundEffect.Play();
         welcomeObject.SetActive(false);
     }
 
     public void CloseWelcomeObject2()
     {
+        // *** ---- the CloseWelcomeObject function will be call when the user close the welcome object 2 ---- *** //
+
         buttonSoundEffect.Play();
         welcomeObject2.SetActive(false);
     }
 
     public void CloseWelcomeObject3()
     {
+        // *** ---- the CloseWelcomeObject function will be call when the user close the welcome object 3 ---- *** //
+
         buttonSoundEffect.Play();
         welcomeObject3.SetActive(false);
     }
 
     public void ShowVideoTuts ()
     {
+        // *** ---- the ShowVideoTuts function will be call when the user watch the video tutorial ---- *** //
+
         buttonSoundEffect.Play();
         gameManager.stopBGMusicForTuts = true;
         if (typeWelcome == "write play" || typeWelcome == "arrange")
@@ -217,12 +233,16 @@ public class ForWelcomeScript : MonoBehaviour
 
     public void GoBackToLvlBtn ()
     {
+        // *** ---- the GoBackToLvlBtn function will be call when the user goes back to the choosing level page ---- *** //
+
         welcomeObject.SetActive(true);
         welcomeObject2.SetActive(false);
     }
 
     public void HideVideoTuts()
     {
+        // *** ---- the HideVideoTuts function will be call when the user close the video tutorial ---- *** //
+
         buttonSoundEffect.Play();
         gameManager.stopBGMusicForTuts = false;
         if (typeWelcome == "write play" || typeWelcome == "arrange")
@@ -239,6 +259,8 @@ public class ForWelcomeScript : MonoBehaviour
 
     public void NextTutsBtn()
     {
+        // *** ---- the NextTutsBtn function will be call when the user proceed to the next video tutorial ---- *** //
+
         buttonSoundEffect.Play();
         welcomeObject.SetActive(false);
         welcomeObject2.SetActive(true);

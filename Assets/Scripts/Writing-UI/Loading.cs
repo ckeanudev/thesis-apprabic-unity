@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Loading : MonoBehaviour
 {
+    // *** ---- This script is for the loading animation object ---- *** //
+
     WritingUIScript writingUIScript;
     public GameObject writingUIS;
 

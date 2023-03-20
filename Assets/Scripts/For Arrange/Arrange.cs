@@ -33,6 +33,8 @@ public class Arrange : MonoBehaviour
 
     void OnEnable()
     {
+        // *** ---- the OnEnable function will be call when the page load ---- *** //
+
         arrangeUIScript = arrangeUIS.GetComponent<ArrangeUIScript>();
 
         currentTime = 0;
@@ -46,6 +48,8 @@ public class Arrange : MonoBehaviour
 
     public IEnumerator ShowSecondPage()
     {
+        // *** ---- the ShowSecondPage function will be call when the OnEnable function was called and it will display the correct arrangement of the given letters or numbers for 3 seconds ---- *** //
+
         yield return new WaitForSeconds(3f);
         firstPage.SetActive(false);
         secondPage.SetActive(true);
@@ -54,6 +58,8 @@ public class Arrange : MonoBehaviour
 
     public void ArrangeDoneButton()
     {
+        // *** ---- This ArrangeDoneButton function will be call if the user is done arranging the given letters or number ---- *** //
+
         buttonSoundEffect.Play();
         timerStopFunction();
         doneButton.SetActive(false);
@@ -87,21 +93,26 @@ public class Arrange : MonoBehaviour
 
     public void timerStartFunction()
     {
-        //Debug.Log("Count Start!");
-        //Debug.Log(currentTime.ToString());
+        // *** ---- the timerStartFunction function will be call when the chosen level starts ---- *** //
+
         isTimerStart = true;
         isTimerStop = false;
     }
 
     public void timerStopFunction()
     {
-        //Debug.Log("Count Stop!");
+        // *** ---- the timerStopFunction function will be call when the chosen level has ended ---- *** //
+
         isTimerStart = false;
         isTimerStop = true;
     }
 
     void Update()
     {
+        // *** ---- the Update function will be call when the current page loads for every seconds ---- *** //
+
+        // *** ---- the function below were checking if the timer is running or stopped and it will give the score to the user depends on how fast the user finish the level ---- *** //
+
         if (isTimerStart && !isTimerStop)
         {
             currentTime = currentTime += Time.deltaTime;

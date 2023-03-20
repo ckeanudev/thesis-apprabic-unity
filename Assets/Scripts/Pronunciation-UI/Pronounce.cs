@@ -6,6 +6,8 @@ using TMPro;
 
 public class Pronounce : MonoBehaviour
 {
+    // *** ---- This script is for the Pronounce Level where it has a function to use the audios and to check if the user gets the correct answer ---- *** //
+
     PronouneUIScript pronouneUIScript;
     public GameObject PronouneUIS;
 
@@ -36,6 +38,8 @@ public class Pronounce : MonoBehaviour
 
     void OnEnable()
     {
+        // *** ---- the OnEnable function will be call when the page loads and it will get the components and objects that are necessary for the pronounce module ---- *** //
+
         int num = Random.Range(1, 4);
 
         pronouneUIScript = PronouneUIS.GetComponent<PronouneUIScript>();
@@ -72,6 +76,8 @@ public class Pronounce : MonoBehaviour
 
     public void NextPage()
     {
+        // *** ---- the NextPage function will be call when the user is ready to play the pronounce level and it will start the timer ---- *** //
+
         buttonSoundEffect.Play();
         firstPage.SetActive(false);
         secondPage.SetActive(true); 
@@ -85,6 +91,8 @@ public class Pronounce : MonoBehaviour
 
     public void PlayAudio(int audio)
     {
+        // *** ---- the PlayAudio function will be call when the user click the buttons to listen for the correct audio or pronunciation ---- *** //
+
         if (audio == 1)
         {
             firstAudio.Play();
@@ -101,6 +109,8 @@ public class Pronounce : MonoBehaviour
 
     public void OptionButtons(int num)
     {
+        // *** ---- the OptionButtons function will be call when the user chose the audio and it will stop the timer to check if the user gets the correct pronunciation for the given letter or number ---- *** //
+
         audioContainer1.SetActive(false);
         choiceContainer1.SetActive(false);
         audioContainer2.SetActive(false);
@@ -128,6 +138,8 @@ public class Pronounce : MonoBehaviour
 
     public void timerStartFunction()
     {
+        // *** ---- the timerStartFunction function will be call when the user start to play and it will start the timer ---- *** //
+
         currentTime = 0;
         //Debug.Log("Count Start!");
         //Debug.Log(currentTime.ToString());
@@ -137,6 +149,8 @@ public class Pronounce : MonoBehaviour
 
     public void timerStopFunction()
     {
+        // *** ---- the timerStopFunction function will be call when the user finished and it will stop the timer ---- *** //
+
         //Debug.Log("Count Stop!");
         isTimerStart = false;
         isTimerStop = true;
@@ -144,6 +158,8 @@ public class Pronounce : MonoBehaviour
 
     void Update()
     {
+        // *** ---- the Update function will be call every second when the page render and it will check the timer and it will display the score of the user ---- *** //
+
         if (isTimerStart && !isTimerStop)
         {
             currentTime = currentTime += Time.deltaTime;

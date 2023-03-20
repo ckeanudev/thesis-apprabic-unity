@@ -7,6 +7,8 @@ using TMPro;
 
 public class DragScript : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
+    // *** ---- This script is for the Writing Module specially for the object that will drag by the user in order to write or follow the path ---- *** //
+
     [SerializeField] private Canvas canvas;
 
     public int orderDrag;
@@ -24,15 +26,14 @@ public class DragScript : MonoBehaviour, IPointerDownHandler, IBeginDragHandler,
 
     void OnEnable()
     {
+        // *** ---- the OnEnable function will be call when the page loads and it will get the components and objects with a scripts ---- *** //
+
         traceContent = traceC.GetComponent<Trace>();
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
 
-        //Debug.Log("Drag Enabled ---------------------------------------");
         indexCount = 0;
         
-        //Debug.Log(transform.position);
-
         if (startPosition.x == 0)
         {
             startPosition.x = transform.position.x;
@@ -51,19 +52,23 @@ public class DragScript : MonoBehaviour, IPointerDownHandler, IBeginDragHandler,
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        //Debug.Log("OnBeginDrag");
+        // *** ---- the OnBeginDrag function will be call when the user begin to drag the object to write ---- *** //
+
         canvasGroup.alpha = .8f;
         canvasGroup.blocksRaycasts = false;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+        // *** ---- the OnDrag function will be call when the user is dragging the object ---- *** //
+
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        //Debug.Log("OnEndDrag");
+        // *** ---- the OnEndDrag function will be call when the user finished dragging the object ---- *** //
+
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
         indexCount = 0;
@@ -72,19 +77,20 @@ public class DragScript : MonoBehaviour, IPointerDownHandler, IBeginDragHandler,
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        //Debug.Log("OnPointerDOwn " + orderDrag.ToString());
+        // *** ---- the OnPointerDown function will be call when the user hold or click the object before dragging it ---- *** //
+
         if (indexCount <= 1)
             indexCount = indexCount + 1;
 
-        //Debug.Log("Check1");
         traceContent.timerStartFunction();
     }
 
     private void Update()
     {
+        // *** ---- the Update function will be call every second when the current page load and it will check the tracing on the Writing Module ---- *** //
+
         if (indexCount == orderDragFinal)
         {
-            //Debug.Log("Finished!!");
             traceContent.TracingCheck(orderDrag);
         }
     }
@@ -92,6 +98,8 @@ public class DragScript : MonoBehaviour, IPointerDownHandler, IBeginDragHandler,
     // --------------------------------------------------- For Checkpoints --------------------------------------------------- //
     private void OnTriggerEnter2D(Collider2D other)
     {
+        // *** ---- the OnTriggerEnter2D function will be call when the user grads the onject to the checkpoints and check if it is correct order ---- *** //
+
         if (other.gameObject.name == "Checkpoint1" && indexCount == 1)
         {
             indexCount = indexCount + 1;

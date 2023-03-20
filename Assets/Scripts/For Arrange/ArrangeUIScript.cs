@@ -6,6 +6,8 @@ using TMPro;
 
 public class ArrangeUIScript : MonoBehaviour
 {
+    // *** ---- This script controls the UI or page for the Arrange Module ---- *** //
+
     public GameObject topContent;
     public TextMeshProUGUI levelText;
 
@@ -55,6 +57,8 @@ public class ArrangeUIScript : MonoBehaviour
 
     private void OnEnable()
     {
+        // *** ---- the OnEnable function will be call when the page load ---- *** //
+
         gameManager = gameM.GetComponent<GameManager>();
         playerPrefStats = playerPrefS.GetComponent<PlayerStats>();
         requiredPointsForLevels = requiredPointsS.GetComponent<RequiredPointsForLevels>();
@@ -68,6 +72,8 @@ public class ArrangeUIScript : MonoBehaviour
 
     public void BackToChooseLevel()
     {
+        // *** ---- the BackToChooseLevel function will be call when the user click the "Go Back" button to choose a different level ---- *** //
+
         gameManager.buttonSoundEffect.Play();
         pressNextButton = true;
         showWinDialog = false;
@@ -78,6 +84,8 @@ public class ArrangeUIScript : MonoBehaviour
 
     public void NextLevelBtn()
     {
+        // *** ---- the NextLevelBtn function will be call when the user click the "Next" button to proceed to a next level ---- *** //
+
         //showWinDialog = false;
         //if(gameManager.arrangeLevel >= 18)
         //{
@@ -334,6 +342,8 @@ public class ArrangeUIScript : MonoBehaviour
 
     public void AddWritingLevel()
     {
+        // *** ---- the AddWritingLevel function will be call when the user succeed the current level and it will unlock the newest or next level by adding 1 in the Arrange Level ---- *** //
+
         gameManager.buttonSoundEffect.Play();
         gameManager.arrangeLevel += 1;
         showWinDialog = false;
@@ -341,6 +351,8 @@ public class ArrangeUIScript : MonoBehaviour
 
     public void ShowSufficientObject(int num)
     {
+        // *** ---- the ShowSufficientObject function will be call when the user click the "Next" button but didn't earn enough points to unlock or proceed to the next level ---- *** //
+
         sufficientPointsText.text = "You need " + num.ToString() + " more points to proceed. Retry to earn more points";
         sufficientPointsObject.SetActive(true);
         pressNextButton = false;
@@ -349,6 +361,8 @@ public class ArrangeUIScript : MonoBehaviour
 
     public IEnumerator HideSufficientAgain()
     {
+        // *** ---- the HideSufficientAgain function will be call when the ShowSufficientObject function will be called and it will hde the object after 10 seconds ---- *** //
+
         yield return new WaitForSeconds(10f);
         sufficientPointsObject.SetActive(false);
         pressNextButton = true;
@@ -356,6 +370,8 @@ public class ArrangeUIScript : MonoBehaviour
 
     public void CloseSufficientObject()
     {
+        // *** ---- the CloseSufficientObject function will be call when the user close the object that the ShowSufficientObject function display ---- *** //
+
         gameManager.buttonSoundEffect.Play();
         sufficientPointsObject.SetActive(false);
         pressNextButton = true;
@@ -363,6 +379,8 @@ public class ArrangeUIScript : MonoBehaviour
 
     public void RetryBtn()
     {
+        // *** ---- the RetryBtn function will be call when the user choose to retry the current level ---- *** //
+
         gameManager.buttonSoundEffect.Play();
         sufficientPointsObject.SetActive(false);
         pressNextButton = true;
@@ -440,6 +458,8 @@ public class ArrangeUIScript : MonoBehaviour
 
     public void BackFromArrange()
     {
+        // *** ---- the BackFromArrange function will be call when the user choose to go back the arrange menu ---- *** //
+
         gameManager.buttonSoundEffect.Play();
         gameManager.mainPageNumber = 9;
         gameManager.pageNumber = 1;
@@ -465,6 +485,8 @@ public class ArrangeUIScript : MonoBehaviour
 
     public void LevelPageRender()
     {
+        // *** ---- the LevelPageRender function will be call when the user choose a level and it will render the chosen level ---- *** //
+
         if (gameManager.arrangeLevel == 1)
         {
             lvl1.SetActive(true);
@@ -847,6 +869,8 @@ public class ArrangeUIScript : MonoBehaviour
 
     public void ShowVideo(int num)
     {
+        // *** ---- the ShowVideo function will be call when the user click the "Watch Video" button to watch on haw to do the Arrange Level ---- *** //
+
         gameManager.buttonSoundEffect.Play();
         if (num == 1)
         {

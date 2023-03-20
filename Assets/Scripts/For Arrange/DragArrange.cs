@@ -43,19 +43,23 @@ public class DragArrange : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        //Debug.Log("OnBeginDrag");
+        // *** ---- the OnBeginDrag function will be call everytime th user begin to drag the letter or number to the empty slot in order to arrange them ---- *** //
+
         canvasGroup.alpha = .8f;
         canvasGroup.blocksRaycasts = false;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+        // *** ---- the OnDrag function will be call when the user will drag the object ---- *** //
+
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        //Debug.Log("OnEndDrag");
+        // *** ---- the OnEndDrag function will be call when the user stop dragging the object ---- *** //
+
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
         //transform.position = new Vector2(startPosition.x, startPosition.y);
@@ -63,6 +67,8 @@ public class DragArrange : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        // *** ---- the OnPointerDown function will be call when the user click the object ---- *** //
+
         //Debug.Log("OnPointerDOwn " + orderDrag.ToString());
         //indexCount = indexCount + 1;
         //Debug.Log("OnPointerDOwn");

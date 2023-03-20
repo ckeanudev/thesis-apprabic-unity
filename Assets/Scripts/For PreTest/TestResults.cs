@@ -21,6 +21,8 @@ public class TestResults : MonoBehaviour
 
     private void OnEnable()
     {
+        // *** ---- the OnEnable function will be call when the page load and it will get the components with a scripts ---- *** //
+
         preTestScript = preTestS.GetComponent<PreTestScript>();
         playerPrefStats = playerPrefS.GetComponent<PlayerStats>();
 
@@ -31,6 +33,8 @@ public class TestResults : MonoBehaviour
 
     public IEnumerator ShowResult()
     {
+        // *** ---- the ShowResult function will be call when the user finished the test and it will display the result of their performance ---- *** //
+
         Debug.Log(preTestScript.testScore);
 
         string tempString = "";

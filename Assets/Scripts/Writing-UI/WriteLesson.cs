@@ -57,6 +57,8 @@ public class WriteLesson : MonoBehaviour
 
     private void OnEnable()
     {
+        // *** ---- the OnEnable function will be call when the page loads ---- *** //
+
         if (lessonType == "letters")
         {
             lessonL1.SetActive(false);
@@ -108,6 +110,8 @@ public class WriteLesson : MonoBehaviour
 
     public void LessonRender ()
     {
+        // *** ---- the LessonRender function renders the chosen writing level whether its letters or number ---- *** //
+
         if (lessonType == "letters")
         {
             if (gameManager.writingLevel == 1)
