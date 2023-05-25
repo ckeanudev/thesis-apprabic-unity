@@ -80,7 +80,10 @@ public class DragScript : MonoBehaviour, IPointerDownHandler, IBeginDragHandler,
         // *** ---- the OnPointerDown function will be call when the user hold or click the object before dragging it ---- *** //
 
         if (indexCount <= 1)
-            indexCount = indexCount + 1;
+        {
+            indexCount = indexCount + 2;
+            Debug.Log(indexCount);
+        }
 
         traceContent.timerStartFunction();
     }
@@ -89,7 +92,7 @@ public class DragScript : MonoBehaviour, IPointerDownHandler, IBeginDragHandler,
     {
         // *** ---- the Update function will be call every second when the current page load and it will check the tracing on the Writing Module ---- *** //
 
-        if (indexCount == orderDragFinal)
+        if (indexCount >= orderDragFinal)
         {
             traceContent.TracingCheck(orderDrag);
         }
@@ -104,16 +107,19 @@ public class DragScript : MonoBehaviour, IPointerDownHandler, IBeginDragHandler,
         {
             indexCount = indexCount + 1;
             //Debug.Log("Check2");
+            Debug.Log(indexCount);
         }
         else if (other.gameObject.name == "Checkpoint2" && indexCount == 2)
         {
             indexCount = indexCount + 1;
             //Debug.Log("Check3");
+            Debug.Log(indexCount);
         }
         else if (other.gameObject.name == "Checkpoint3" && indexCount == 3)
         {
             indexCount = indexCount + 1;
             //Debug.Log("Check4");
+            Debug.Log(indexCount);
         }
         else if (other.gameObject.name == "Checkpoint4" && indexCount == 4)
         {
